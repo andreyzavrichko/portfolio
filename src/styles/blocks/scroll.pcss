@@ -1,0 +1,20 @@
+.scroll__image {
+  display: flex;
+  align-items: center;
+
+  &:before {
+    content: "Скролл";
+    display: inline-block;
+    margin-right: 22px;
+    font-weight: $semi-bold; 
+    color: $text-color;  
+  }
+  &:after {
+    content: "";
+    display: block;
+    background: svg-load('scroll.svg', fill=$text-color, width=30px, height=30px) no-repeat;
+    width: 40px;
+    height: 35px;
+  }
+  padding-bottom: 20%;
+}

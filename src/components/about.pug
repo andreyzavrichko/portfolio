@@ -1,0 +1,24 @@
+section.about  
+            .container.about-container
+              .avatar
+                .avatar__block
+                  +image(`content/user.jpg`, 'avatar__image', 'Аватар')
+                .avatar__info
+                  table.avatar__info-table   
+                    -
+                      var informations = [
+                        ['Проживаю:', 'Тирасполь'],
+                        ['Возраст:', '28 лет'],
+                        ['Родился:', '26 января 1991']
+                      ];    
+                    each info in informations
+                      tr.avatar__info-row
+                        td.avatar__info-key #{info[0]}      
+                        td.avatar__info-value #{info[1]}                           
+              .description
+                .description__name
+                  .description__name-welcome Привет, меня зовут
+                  h2.description__name Андрей Завричко
+                  .description__name-about Я занимаюсь разработкой современных сайтов и приложений. Мне нравится делать интересные и современные проекты.
+                .description__block
+                  .description__content Этот сайт я сделал в рамках обучения в Школе онлайн образования LoftSchool. Чуть позже я освежу в нём свой контент. А пока посмотрите, как тут всё классно и красиво!          

@@ -6,10 +6,12 @@ html(lang="ru")
     meta(charset="UTF-8")
     meta(name="viewport", content="width=device-width, initial-scale=1.0")
     meta(http-equiv="X-UA-Compatible", content="ie=edge")
+    link(rel="shortcut icon" href="./favicon.ico" type="image/x-icon")
     title Portfolio | main page
   body
     .wrapper
-      .maincontent
+      main.maincontent
+
         .wrappersections.wrappersections--home
           section.fullscreen-section.hero
             .container.hero-container
@@ -39,33 +41,9 @@ html(lang="ru")
                   h1.hero__name-elem Андрей Завричко  
               .hero__scroll
                 .scroll__block
-                  button(type="button").scroll__image              
-          section.about  
-            .container.about-container
-              .avatar
-                .avatar__block
-                  +image(`content/user.jpg`, 'avatar__image', 'Аватар')
-                .avatar__info
-                  table.avatar__info-table   
-                    -
-                      var informations = [
-                        ['Проживаю:', 'Тирасполь'],
-                        ['Возраст:', '28 лет'],
-                        ['Родился:', '26 января 1991']
-                      ];    
-                    each info in informations
-                      tr.avatar__info-row
-                        td.avatar__info-key #{info[0]}      
-                        td.avatar__info-key #{info[1]} 
-                        td.avatar__info-key #{info[2]}   
-              .description
-                .description__name
-                  .description__name-welcome Привет, меня зовут
-                  h2.description__name Андрей Завричко
-                  description__name-about Я занимаюсь разработкой современных сайтов и приложений. Мне нравится делать интересные и современные проекты.
-                .description__block
-                  .description__content Этот сайт я сделал в рамках обучения в Школе онлайн образования LoftSchool. Чуть позже я освежу в нём свой контент. А пока посмотрите, как тут всё классно и красиво!
-          
+                  button(type="button").scroll__image  
+
+          include components/about
           .triangles
             svg(viewBox="0 0 1000 100" preserveAspectRatio="none").triangle__item
               polygon(
@@ -128,12 +106,12 @@ html(lang="ru")
                     +image('content/work/preview.jpg', 'slider__preview-image', 'Превью')
                     .slider__workimages
                       ul.slider__list
-                        - var previews = ['slider-image1', 'slider-image2', 'slider-image3', 'slider-image4']
+                        - var previews = ['slider-image1', 'slider-image2', 'slider-image3', 'slider-image4'];
                         each prev in previews
                           li.slider__item
                             .slider__image
                               +image(`content/work/${prev}.jpg`, 'slider__image-icon', 'Работа')
-                  slider__navigation
+                  .slider__navigation
                     .navigation
                       button(type="button").navigation__button.navigation__button--up.no-active
                         +icon('arrow-down', 'navigation__button-icon')
@@ -154,7 +132,7 @@ html(lang="ru")
                         +icon('link', 'slider__icon')
                         a(href="#").slider__link Посмотреть сайт
 
-        .wrappersections.srappersections--end 
+        .wrappersections.wrappersections--end 
           .triangles.triangles--two
             svg(viewBox="0 0 1000 100" preserveAspectRatio="none").triangle__item
               polygon(
@@ -206,9 +184,9 @@ html(lang="ru")
                   .form__row
                     label(data-text="Введите ваше имя").form__elem
                       .form__elem-container.form__elem-container--user
-                        .input(type="text" placeholder="Ковальчук Дмитрий").form__elem-input
+                        input(type="text" placeholder="Ковальчук Дмитрий").form__elem-input
                     label(data-text="Введите ваш email").form__elem
-                      .form__elem-conteiner.form__elem-container--envelope  
+                      .form__elem-container.form__elem-container--envelope  
                         input(type="text" placeholder="loftschool@study.com").form__elem-input
                   .form__row.form__row--textarea
                     label(data-text="Сообщение к письму").form__elem
@@ -223,13 +201,13 @@ html(lang="ru")
           .footer__left
             .copyright
               .copyright__year
-                .copyright__year_text  © 2019   
+                .copyright__year-text  © 2019   
               .footer__hero
                 .hero__name
                   h2.hero__name-elem Андрей Завричко
                 .hero__profession
                   .hero__profession-elem Личный сайт #[span.span-block]веб-разработчика
-          footer.right
+          .footer__right
             .footer__navigation
               nav.menu.menu--col-white
                 ul.menu__list
