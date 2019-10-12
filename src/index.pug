@@ -10,6 +10,33 @@ html(lang="ru")
   body
     .wrapper
       .maincontent
-        +image('content/user.jpg', 'user-pic')
-        +icon('link', 'link-class')
-        .icon-bg
+        .wrappersections.wrappersections--home
+          section.fullscreen-section.hero
+            .container.hero-container
+              header.header
+                .header__logo
+                  .logo
+                    h2.logo__title АЗ
+                .header__menu
+                  nav.menu
+                    ul.menu__list
+                       - var items = ['Главная', 'Обо мне', 'Навыки', 'Работы', 'Отзывы', 'Связаться'];
+                       each item in items
+                        li.menu__item
+                          a(href="#").menu__link #{item}
+                .header__social
+                  .social
+                    ul.social__list
+                      - var socials = ['insta', 'vk', 'github'];
+                      each social in socials   
+                        li.social__item 
+                          a(href="#").social__link  
+                            +icon(social, 'social__icons')     
+              .hero__block
+                .hero__profession   
+                  .hero__profession-elem Личный сайт #[span.span-block] веб-разработчика
+                .hero__name
+                  h1.hero__name-elem Андрей Завричко  
+              .hero__scroll
+                .scroll__block
+                  button(type="button").scroll__image               

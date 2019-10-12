@@ -2,7 +2,7 @@
 
 **Студент**: Андрей Завричко
 
-**Наставник**: Артур Врублевский
+**Наставник**: Татьяна Курочкина
 
 **Обучение**: 7.10.2019-11.11.2019
 
@@ -12,8 +12,8 @@
 
 ##  Чтобы развернуть проект необходимо:
 ```sh
-$ git clone git@github.com:loftschool/ls-advanced-portfolio.git
-$ cd ls-advanced-portfolio
+$ git clone https://github.com/andreyzavrichko/portfolio.git
+$ cd portfolio
 $ yarn
 ```
 
