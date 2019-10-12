@@ -15,25 +15,7 @@ html(lang="ru")
         .wrappersections.wrappersections--home
           section.fullscreen-section.hero
             .container.hero-container
-              header.header
-                .header__logo
-                  .logo
-                    h2.logo__title АЗ
-                .header__menu
-                  nav.menu
-                    ul.menu__list
-                       - var items = ['Главная', 'Обо мне', 'Навыки', 'Работы', 'Отзывы', 'Связаться'];
-                       each item in items
-                        li.menu__item
-                          a(href="#").menu__link #{item}
-                .header__social
-                  .social
-                    ul.social__list
-                      - var socials = ['insta', 'vk', 'github'];
-                      each social in socials   
-                        li.social__item 
-                          a(href="#").social__link  
-                            +icon(social, 'social__icons')     
+              include components/header    
               .hero__block
                 .hero__profession   
                   .hero__profession-elem Личный сайт #[span.span-block] веб-разработчика
@@ -55,82 +37,8 @@ html(lang="ru")
               )    
 
         .wrappersections.wrappersections--two
-          section.useful
-            .container
-              .useful__title
-                .title
-                  h3.title-elem Чем я могу быть полезен вам   
-                .useful__description Этот сайт я сделал в рамках обучения в Школе онлайн образования LoftSchool. Чуть позже я освежу в нём свой контент. А пока посмотрите, как тут всё классно и красиво!
-              .skills
-                .skills__content
-                  .svg__lineargradient  
-                    svg
-                      defs  
-                        - var begin="#ad00ed", end="#5500f2";     
-                        linearGradient(
-                          id = "gradient"
-                          x1="0%" y1="0%" x2="0%" y2="100%"
-                        )   
-                          stop(offset="0%" stop-color=`${begin}`)
-                          stop(offset="100%" stop-color=`${end}`) 
-                  ul.skills__list
-                    -
-                      var skills = [
-                        ['Front-end', ['HTML5', 'CSS3', 'Javascript', 'Jquery и Vue.js']],
-                        ['Workflow', ['GIT', 'Terminal', 'Gulp', 'Webpack']]
-                      ];        
-                    each skill in skills
-                      li.skills__list
-                        .skills__title #{skill[0]} 
-                        ul.skills__tech-list
-                          each tech in skill[1] 
-                            li.skills__tech-item
-                              .skills__tech-item-box
-                                svg(viewBox="0 0 200 200" preserveAspectRatio="none").skills__circle
-                                  circle(
-                                    r="80" cx="100" cy="100"
-                                  ).skill__circle.skill__circle--under
-                                  circle(
-                                    r="80" cx="100" cy="100"
-                                    stroke="url(#gradient)"
-                                  ).skill__circle.skill__circle--above
-                                .skills__text #{tech}
-          section.work
-            .container
-              .work__title
-                .title
-                  h2.title-elem Мои работы 
-              .slider
-                .slider__preview
-                  div(data-slide="4").slider__preview-block
-                    +image('content/work/preview.jpg', 'slider__preview-image', 'Превью')
-                    .slider__workimages
-                      ul.slider__list
-                        - var previews = ['slider-image1', 'slider-image2', 'slider-image3', 'slider-image4'];
-                        each prev in previews
-                          li.slider__item
-                            .slider__image
-                              +image(`content/work/${prev}.jpg`, 'slider__image-icon', 'Работа')
-                  .slider__navigation
-                    .navigation
-                      button(type="button").navigation__button.navigation__button--up.no-active
-                        +icon('arrow-down', 'navigation__button-icon')
-                      button(type="button").navigation__button.navigation__button--down
-                        +icon('arrow-down', 'navigation__button-icon')
-                .slider__content
-                  .slider__description
-                    .slider__tag
-                      ul.slider__tag-list
-                        - var tags = ['HTML', 'CSS', 'Javascript'];  
-                        each tag in tags
-                          li.slider__tag-item
-                            .slider__tag-text #{tag}
-                      .slider__work
-                        h3.slider__work-title Сайт школы образования
-                          .slider__work-description Этот парень проходил обучение веб-разработке не где-то, а в LoftSchool! 2 месяца только самых тяжелых испытаний и бессонных ночей! 
-                      .slider__linkblock
-                        +icon('link', 'slider__icon')
-                        a(href="#").slider__link Посмотреть сайт
+          include components/useful          
+          include components/work    
 
         .wrappersections.wrappersections--end 
           .triangles.triangles--two
@@ -143,89 +51,8 @@ html(lang="ru")
                 points="0,0 0,100 1000,0"
               )
 
-          section.review
-            .container
-              .review__titlebox
-                .title
-                  h2.title-elem Что обо мне говорят
-                .review__navigation
-                  .navigation
-                    button(type="button").navigation__button.navigation__button--up.no-active
-                      +icon('arrow-down', 'navigation__button-icon')
-                    button(type="button").navigation__button.navigation__button--down   
-                      +icon('arrow-down', 'navigation__button-icon') 
-              .review__block
-                ul.review__list
-                  -
-                    var reviews = [
-                      ['Этот парень проходил обучение веб-разработке не где-то, а в LoftSchool! 4,5 месяца только самых тяжелых испытаний и бессонных ночей!', 'Ковальчук Дмитрий', 'Основатель Loftschool'],
-                      ['Этот код выдержит любые испытания. Только пожалуйста, не загружайте сайт на слишком старых браузерах', 'Владимир Сабанцев', 'Преподаватель']
-                    ], i = 1;
-                  each review in reviews
-                    li.review__item
-                      .review__image
-                        +icon('quote', 'review__icon')  
-                      .review__description
-                        .review__text #{review[0]} 
-                        .review__autor
-                          .avatar.avatar--review
-                            .avatar__block
-                              +image(`content/reviews/review${i++}.jpg`, 'avatar__image', 'Аватар')
-                          .review__about
-                            .review__name #{review[1]}
-                            .review__profession #{review[2]}
+          include components/review 
 
-          section.feedback
-            .container
-              .title
-                h2.title__elem Связаться со мной
-              form.form
-                .form__wrapper
-                  .form__row
-                    label(data-text="Введите ваше имя").form__elem
-                      .form__elem-container.form__elem-container--user
-                        input(type="text" placeholder="Ковальчук Дмитрий").form__elem-input
-                    label(data-text="Введите ваш email").form__elem
-                      .form__elem-container.form__elem-container--envelope  
-                        input(type="text" placeholder="loftschool@study.com").form__elem-input
-                  .form__row.form__row--textarea
-                    label(data-text="Сообщение к письму").form__elem
-                      .form__elem-container.form__elem-container--message
-                        textarea(type="textarea" placeholder="Требуется ваша помощь в создании сайта.\n Интересуют сроки и цена вопроса").form__elem-input.form__elem-input--textarea
-                  .form__row
-                    label.form__elem
-                      button(type="submit").form__elem-button Отправить
+          include components/feedback
       
-      footer.footer
-        .container.footer-container
-          .footer__left
-            .copyright
-              .copyright__year
-                .copyright__year-text  © 2019   
-              .footer__hero
-                .hero__name
-                  h2.hero__name-elem Андрей Завричко
-                .hero__profession
-                  .hero__profession-elem Личный сайт #[span.span-block]веб-разработчика
-          .footer__right
-            .footer__navigation
-              nav.menu.menu--col-white
-                ul.menu__list
-                  each item in items
-                    li.menu__item
-                      a(href="#").menu__link #{item}
-            .footer__thinks
-              .footer__mythink
-                article.footer__text Этот сайт я сделал в рамках обучения в Школе онлайн образования Loftschool
-                .footer__social
-                  .social
-                    ul.social__list
-                      - var socials = ['insta', 'vk', 'github'];
-                      each social in socials
-                        li.social__item
-                          a(href="#").social__link
-                            +icon(social, 'social__icons')
-              .footer__greatthink
-                article.footer__text Всегда пишите код так, будто сопровождать его будет склонный к насилию психопат, который знает где вы живете
-                .footer__thinker Martin Golding                       
-
+    include components/footer
