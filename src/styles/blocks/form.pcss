@@ -50,7 +50,7 @@
 }
 .form__elem-container {
   display: flex;
-  border-bottom: 2px solid $text-color;
+  border-bottom: 1px solid $text-color;
 }
 @each $icon in (user,envelope, message) {
   .form__elem-container--#{$icon}:before {
@@ -61,6 +61,7 @@
     width: 40px;
     height: 35px;
     margin-right: 17px;
+    margin-bottom: 10px;
   }
 }
 .form__elem-icon {
