@@ -17,6 +17,9 @@
         border: 1px solid $slider-button;
         margin-right: 30px;
         
+        &:hover {
+            border-color: $active-menu-color;
+        }
         &:last-child{
             margin-right: 0;
         }
@@ -30,9 +33,12 @@
     }
     .navigation__button-icon,
     & .no-active .navigation__button-icon {
-        fill: $slider-button;
-    }    
+        fill: $slider-button;       
+    
+    }   
+    
 }
+
 .review__block {
     overflow: hidden;
     width: 80%;
