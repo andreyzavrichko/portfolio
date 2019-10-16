@@ -6,10 +6,53 @@ html(lang="ru")
     meta(charset="UTF-8")
     meta(name="viewport", content="width=device-width, initial-scale=1.0")
     meta(http-equiv="X-UA-Compatible", content="ie=edge")
+    link(rel="shortcut icon" href="./favicon.ico" type="image/x-icon")
     title Portfolio | main page
   body
     .wrapper
-      .maincontent
-        +image('content/user.jpg', 'user-pic')
-        +icon('link', 'link-class')
-        .icon-bg
+      main.maincontent
+
+        .wrappersections.wrappersections--home
+          section.fullscreen-section.hero
+            .container.hero-container
+              include components/header    
+              .hero__block
+                .hero__profession   
+                  .hero__profession-elem Личный сайт #[span.span-block] веб-разработчика
+                .hero__name
+                  h1.hero__name-elem Андрей Завричко  
+              .hero__scroll
+                .scroll__block
+                  button(type="button").scroll__image  
+
+          include components/about
+          .triangles
+            svg(viewBox="0 0 1000 100" preserveAspectRatio="none").triangle__item
+              polygon(
+                points="0,0 0,100 1000,100"
+              )
+            svg(viewBox="0 0 1000 100" preserveAspectRatio="none").triangle__item
+              polygon(
+                points="0,100 1000,100 1000,0"
+              )    
+
+        .wrappersections.wrappersections--two
+          include components/useful          
+          include components/work    
+
+        .wrappersections.wrappersections--end 
+          .triangles.triangles--two
+            svg(viewBox="0 0 1000 100" preserveAspectRatio="none").triangle__item
+              polygon(
+                points="0,0 1000,100 1000,0"
+              )    
+            svg(viewBox="0 0 1000 100" preserveAspectRatio="none").triangle__item 
+              polygon(
+                points="0,0 0,100 1000,0"
+              )
+
+          include components/review 
+
+          include components/feedback
+      
+    include components/footer
