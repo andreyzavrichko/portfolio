@@ -1,6 +1,33 @@
-.header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding-top: 64px;
+.header {    
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 64px;  
+    
+    @include tablets {
+        padding-top: 50px; 
+    }
+    
+}
+
+.header__logo {
+    padding: 0 2%;
+
+    @include tablets {
+       padding: 0 0.2%;
+    }
+}
+
+.header__menu {
+    & .menu__list {
+        @include tablets {
+            display: none;
+        }
+    }
+}
+
+.header__social {
+    @include tablets {
+        margin-right: 126px;
+    }    
 }

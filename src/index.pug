@@ -11,8 +11,15 @@ html(lang="ru")
   body
     .wrapper
       main.maincontent
-
         .wrappersections.wrappersections--home
+          section.parallax            
+            .parallax__layer.parallax__layer--bg
+              +image('content/parallax/mountain/bg.jpg', 'parallax__image-bg', 'Изображение')
+            - for (var numpic=1; numpic<=6; numpic++)
+              - var speed = numpic / 10;
+              .parallax__layer(data-speed=speed)
+                +image(`content/parallax/mountain/${numpic}.png`, 'parallax__image', 'Изображение')
+        
           section.fullscreen-section.hero
             .container.hero-container
               include components/header    
