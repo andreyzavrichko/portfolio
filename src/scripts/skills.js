@@ -7,16 +7,26 @@ const skill = {
         skillPercent: Number
     },
     methods: {
-        drawColoredCircle() {
-            const circle = this.$refs['color-circle'];
+        drawColoredCircle(value) {
+            const circle = this.$refs['color-circle']; 
             const dashArray = parseInt(getComputedStyle(circle).getPropertyValue('stroke-dasharray'));
-            
-            const percent = dashArray / 100 * (100 - this.skillPercent);
+            const percent = dashArray / 100 * (100 - value);
             circle.style.strokeDashoffset = percent;
-        }
+        },
+        onIntersecting(entries) {
+            entries.forEach((entry) => {
+                if (entry.target === this.$el) {
+                    const value = entry.isIntersecting ? this.skillPercent : 0;                    
+                    this.drawColoredCircle(value);
+                }
+            });
+        },
     },
     mounted() { 
-        this.drawColoredCircle();        
+        this.drawColoredCircle();    
+        
+        const observer = new IntersectionObserver(this.onIntersecting);
+        observer.observe(this.$el);
     }
 }
 

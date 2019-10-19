@@ -15,7 +15,7 @@ footer.footer
                 ul.menu__list
                   each item in items
                     li.menu__item
-                      a(href="#").menu__link #{item}
+                      a(href=item.url).menu__link #{item.title}
             .footer__thinks
               .footer__mythink
                 article.footer__text Этот сайт я сделал в рамках обучения в Школе онлайн образования Loftschool
