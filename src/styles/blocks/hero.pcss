@@ -1,5 +1,15 @@
 .hero {
   margin-bottom: 15%;  
+  
+  @include desktop {
+      margin-bottom: 34%;
+    }   
+
+  @include tablets {
+      height: 63vh;
+      margin-bottom: 38%;
+  }   
+
 }
 .hero-container {
   display: flex;
@@ -10,6 +20,10 @@
 .hero__scroll {
   display: flex;
   justify-content: center;
+
+  @include tablets {
+    display: none;
+  }  
 }
 .hero__block {
   display: flex;
@@ -18,7 +32,38 @@
   flex-direction: column;  
   height: 100%;
   padding: 0 30%;
+
+  @include desktop {
+    align-items: flex-start;
+    justify-content: space-between;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    padding: 0 20%;
+    align-items: center;
+  }
+
+  @include tablets {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column; 
+
+    margin-top: -8%;
+  }
 }
+.hero__profession {
+  margin-bottom: 30px;
+
+  @include desktop { 
+    margin-bottom: 0; 
+    flex-basis: 27%;      
+  }
+  @include tablets {  
+    flex-basis: 0;
+    margin-bottom: 14px;
+  }        
+}
+
 .hero__profession-elem {
   text-align: center;
   font-weight: $bold;
@@ -26,8 +71,39 @@
   color: rgba($light-color, 0.4);
   margin-bottom: 30px;
   width: max-content;
+
+  @include desktop {       
+    text-align: right;      
+    width: 100%;        
+  }
+
+  @include tablets {  
+    text-align: center;       
+  }
+}
+.hero__name {
+  @include desktop {  
+      margin-top: 10%;      
+      flex-basis: 30%;
+  }
+  @include tablets {
+      margin-top: 0;
+      flex-basis: 0;
+  }    
 }
 .hero__name-elem {
   text-align: center;
   line-height: 60px;
+
+  @include desktop {            
+    text-align: left;
+    margin-bottom: 0;
+  }
+
+@include tablets {  
+  font-size: 48px;
+  line-height: 48px;
+  text-align: center;
+  width: 100%;
+  }   
 }
