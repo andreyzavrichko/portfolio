@@ -1,14 +1,14 @@
-header.header
+header.header#main
                 .header__logo
                   .logo
                     h2.logo__title АЗ
                 .header__menu
                   nav.menu
                     ul.menu__list
-                       - var items = ['Главная', 'Обо мне', 'Навыки', 'Работы', 'Отзывы', 'Связаться'];
+                       - var items = [{ title: 'Главная', url: '#main' }, { title: 'Обо мне', url: '#about'}, { title: 'Навыки', url: '#skills'}, { title: 'Работы', url: '#works'}, { title: 'Отзывы', url: '#reviews'}, { title: 'Связаться', url: '#feedback'}];
                        each item in items
                         li.menu__item
-                          a(href="#").menu__link #{item}
+                          a(href=item.url).menu__link #{item.title}
                 .header__social
                   .social
                     ul.social__list
