@@ -2,39 +2,18 @@ section.useful
             .container
               .useful__title
                 .title
-                  h3.title-elem Чем я могу быть полезен вам   
+                  h3.title-elem Чем я могу быть #[span.span-block]полезен вам
                 .useful__description Этот сайт я сделал в рамках обучения в Школе онлайн образования LoftSchool. Чуть позже я освежу в нём свой контент. А пока посмотрите, как тут всё классно и красиво!
               .skills
-                .skills__content
-                  .svg__lineargradient  
+                .skills__content                    
+                  .svg__lineargradient
                     svg
-                      defs  
-                        - var begin="#ad00ed", end="#5500f2";     
+                      defs
+                        - var begin="#ad00ed", end="#5500f2";
                         linearGradient(
                           id = "gradient"
                           x1="0%" y1="0%" x2="0%" y2="100%"
-                        )   
+                        )
                           stop(offset="0%" stop-color=`${begin}`)
-                          stop(offset="100%" stop-color=`${end}`) 
-                  ul.skills__list
-                    -
-                      var skills = [
-                        ['Front-end', ['HTML5', 'CSS3', 'Javascript', 'Jquery и Vue.js']],
-                        ['Workflow', ['GIT', 'Terminal', 'Gulp', 'Webpack']]
-                      ];        
-                    each skill in skills
-                      li.skills__list
-                        .skills__title #{skill[0]} 
-                        ul.skills__tech-list
-                          each tech in skill[1] 
-                            li.skills__tech-item
-                              .skills__tech-item-box
-                                svg(viewBox="0 0 200 200" preserveAspectRatio="none").skills__circle
-                                  circle(
-                                    r="80" cx="100" cy="100"
-                                  ).skill__circle.skill__circle--under
-                                  circle(
-                                    r="80" cx="100" cy="100"
-                                    stroke="url(#gradient)"
-                                  ).skill__circle.skill__circle--above
-                                .skills__text #{tech}
+                          stop(offset="100%" stop-color=`${end}`)
+                  #skills-component
