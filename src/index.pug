@@ -52,6 +52,7 @@ html(lang="ru")
                    
           
         .wrappersections.wrappersections--end 
+          include components/budda-parallax
           .triangles.triangles--two
             svg(viewBox="0 0 1000 100" preserveAspectRatio="none").triangle__item
               polygon(
@@ -61,11 +62,10 @@ html(lang="ru")
               polygon(
                 points="0,0 0,100 1000,0"
               )
-
+          
           include components/review 
-
           include components/feedback
-      
+          
     include components/footer
 
              include ./templates/entry.pug

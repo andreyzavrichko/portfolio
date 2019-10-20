@@ -152,8 +152,10 @@ h3 {
     }
   }
 
-  &--end {
-    background-image: url("../images/content/bg/budda.jpg");
+    &--end {
+    @include tablets {
+      background-image: url("../images/content/bg/budda.jpg");
+    }
  
     & .container {
         @include desktop { 
