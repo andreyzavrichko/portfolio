@@ -1,6 +1,31 @@
 .work {
-  .title-elem {
-    margin-bottom: 92px;
-  }
-  margin-bottom: 173px;
+
+    & .container {
+        @include desktop {
+            width: 90%;
+        }
+    }
+
+    & .title {
+        margin-bottom: 92px;
+
+        @include desktop {
+            margin-bottom: 60px;
+        }
+
+        @include tablets {
+            margin-bottom: 44px;
+        }          
+    }   
+
+    margin-bottom: 109px;
+
+    @include desktop {
+        margin-bottom: 84px;
+    }
+    
+    @include tablets {
+        margin-bottom: 52px;
+    }
 }
+

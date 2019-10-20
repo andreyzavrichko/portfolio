@@ -1,5 +1,5 @@
 .footer {
-    position: relative;
+    position: fixed;
     bottom: 0;
     right: 0;
     left: 0;
@@ -38,7 +38,7 @@
     }   
     @include desktop { 
         width: 25%;
-    }    
+    }      
 }
 
 .footer__right {
@@ -50,7 +50,7 @@
 
     @include tablets { 
         width: 65%;
-    }      
+    }  
 } 
  
 .footer__hero {
@@ -106,7 +106,7 @@
             @include tablets { 
                 padding: 0 51px 12px 0;
                 font-size: 14px;
-            } 
+            }              
         }
 
         &:first-child .menu__link{
@@ -124,7 +124,7 @@
 
     @include tablets { 
         margin-bottom: 8%;
-    } 
+    }  
 }
 
 .footer__thinks {
@@ -148,7 +148,7 @@
         flex: 0;
         margin-right: 0;
         margin-bottom: 10%;
-    }
+    } 
 }
 
 .footer__text {
@@ -164,7 +164,13 @@
     @include tablets {         
         font-size: 14px;
         margin-bottom: 2%;
-    }      
+    }     
+
+    & span {
+        @include desktop {
+            display: inline;
+        }
+    }
 }
 
 .footer__social {
@@ -187,15 +193,15 @@
         &:hover {
             border-color: $active-menu-color;
             transition: .3s;
-            .social__icons {
-                //fill: $active-menu-color;
+            .social__icons {                
                 transition: .3s;
             }
         }
 
         @include tablets { 
             margin-right: 4%;
-        }              
+        }    
+           
     }
     .social__icons {
         position: absolute;

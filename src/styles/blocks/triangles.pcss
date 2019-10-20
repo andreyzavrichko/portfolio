@@ -1,17 +1,50 @@
 .triangles {
-  display: flex;
-  margin-bottom: 15%;
+    display: flex;
+    margin-bottom: 8%;
+
+    @include desktop { 
+        margin-bottom: 13%;
+    }  
+
+    @include tablets { 
+        margin-bottom: 14%;
+    }      
 }
+
 .triangle__item {
-  display: block;
-  height: 93px;
-  width: 50%;
-  fill: $white-color;
-  margin-top: -93px;
+    display: block;
+    height: 109px;
+    width: 50%;
+    fill: $white-color;
+    margin-top: -109px;  
+    
+    @include desktop { 
+        height: 80px;
+        margin-top: -80px;
+    }  
+    @include tablets { 
+        height: 40px;
+        margin-top: -40px;
+        z-index: 1;
+    }      
 }
-.triangles--two {
-  .triangle__item {
-    margin-top: 0;
-  }
-  margin-bottom: 9%;
+
+.triangles--two {    
+    .triangle__item {
+        margin-top: 0;
+
+        @include desktop {         
+            height: 48px;
+        }  
+    }
+
+    margin-bottom: 9%;
+
+    @include desktop {         
+        margin-bottom: 12%;
+    }   
+
+    @include tablets { 
+        margin-bottom: 18%;
+    }  
 }
