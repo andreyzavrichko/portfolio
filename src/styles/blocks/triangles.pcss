@@ -8,7 +8,11 @@
 
     @include tablets { 
         margin-bottom: 14%;
-    }      
+    } 
+
+    @include phones {
+         margin-bottom: 27%;
+    }     
 }
 
 .triangle__item {
@@ -26,6 +30,10 @@
         height: 40px;
         margin-top: -40px;
         z-index: 1;
+    } 
+    @include phones {
+        height: 23px;
+        margin-top: -23px;
     }      
 }
 
@@ -36,6 +44,10 @@
         @include desktop {         
             height: 48px;
         }  
+
+        @include phones {
+            height: 16px;
+        }
     }
 
     margin-bottom: 9%;
@@ -46,5 +58,9 @@
 
     @include tablets { 
         margin-bottom: 18%;
+    } 
+    
+    @include phones {  
+        margin-bottom: 25%;
     }  
 }

@@ -7,7 +7,10 @@
     @include tablets {
         padding-top: 50px; 
     }
-    
+
+    @include phones {
+      padding-top: 53px; 
+    }
 }
 
 .header__logo {
@@ -29,5 +32,9 @@
 .header__social {
     @include tablets {
         margin-right: 126px;
-    }    
+    } 
+
+    @include phones {
+       display: none;
+    }   
 }

@@ -15,7 +15,11 @@
 
         padding-left: 1%;
         margin-right: 4%;
-    }   
+    } 
+
+    @include phones {  
+        margin-bottom: 35px;
+    } 
 }
 
 .avatar__block {
@@ -35,7 +39,12 @@
         width: 170px;
         height:170px;
         margin-bottom: 47px;
-    }      
+    }   
+
+    @include phones {
+        margin: 0 auto;  
+        margin-bottom: 19px;        
+    }    
 }
 
 .avatar__image {    
@@ -66,7 +75,10 @@
     height: 35px;
     @include tablets {
         height:29px;        
-    }      
+    }   
+    @include phones {  
+       height: 29px;
+    }  
 }
 
 .avatar__info-key {
@@ -79,7 +91,11 @@
     }  
     @include tablets {
         padding-right: 11%;
-    }    
+    } 
+
+    @include phones {  
+        padding-right: 17%;
+    }   
 }
 
 .avatar__info-value {

@@ -35,6 +35,11 @@
             height: 409px;
             flex-shrink: 0;
         }
+
+        @include phones {  
+            width: 280px;
+            height: 361px;
+        }
     }
 } 
 
@@ -58,6 +63,10 @@
         width: 100%;
         margin-bottom: 42px;
     } 
+
+    @include phones {  
+        margin-bottom: -23px;
+    }
 }
 
 .skills__item {
@@ -70,6 +79,12 @@
     @include tablets {         
         margin-bottom: 47px;
     }
+
+    @include phones {  
+        margin-bottom: 42px;
+        margin-right: -8%;
+        margin-left: -11%;
+    } 
 
     &:last-child {
         margin-bottom: 0;
@@ -99,6 +114,11 @@
     @include tablets {         
         justify-content: center;
     }   
+
+    @include phones {         
+        flex-wrap: wrap;
+        width: 102%;
+    }
 }
 
 .skills__tech-item {
@@ -115,6 +135,11 @@
     @include tablets { 
         margin-right: 20px;
     }
+
+    @include phones {         
+        margin-right: 2%;
+        margin-bottom: 2%;
+    }
 }
 
 .skills__tech-item-box{
@@ -130,6 +155,11 @@
     @include tablets {
         width: 132px;
         height:132px;
+    }
+
+    @include phones {
+        max-width: 135px;
+        max-height:135px;
     }
 }
 

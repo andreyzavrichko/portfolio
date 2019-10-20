@@ -1,7 +1,7 @@
 [
   {
     "id": 1,
-    "title": "Лендинг бургерной Mr. Burger",
+    "title": "Сайт школы образования",
     "skills": "HTML, Sass, JavaScript, FlexBox",
     "photo": "slider-image3.jpg",
     "link": "//rambler.ru",
@@ -9,7 +9,7 @@
   },
   {
     "id": 2,
-    "title": "Сайт компании AirLines",
+    "title": "Сайт школы образования",
     "skills": "HTML, CSS",
     "photo": "slider-image1.jpg",
     "link": "//google.com",
@@ -17,7 +17,7 @@
   },
   {
     "id": 3,
-    "title": "Сайт коворкинга",
+    "title": "Сайт школы образования",
     "skills": "HTML, CSS",
     "photo": "slider-image2.jpg",
     "link": "//yandex.ru",
@@ -25,7 +25,7 @@
   },   
   {
       "id": 4,
-      "title": "Заголовок",
+      "title": "Сайт школы образования",
       "skills": "HTML, CSS, JavaScript",
       "photo": "slider-image4.jpg",
       "link": "//rambler.ru",

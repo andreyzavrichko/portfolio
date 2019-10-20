@@ -40,7 +40,13 @@
     @include tablets {
         flex: 1;
         margin-bottom: -1%;
-    }     
+    }    
+
+    @include phones {        
+        margin-bottom: 30px;
+        font-size: 14px;
+        width: 95%;
+    }  
 }
 
 .description__name-welcome {
@@ -54,7 +60,11 @@
 
     @include tablets {
         margin-bottom: 11%;
-    }    
+    }   
+
+    @include phones {
+         margin-bottom: 12%;
+    } 
 }
 
 .description__name-about {

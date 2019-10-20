@@ -9,6 +9,9 @@
         margin-bottom: 142px;
     }  
 
+    @include phones {
+         margin-bottom: 105px;
+    }
 }
 
 .about-container {
@@ -19,4 +22,8 @@
     @include desktop {
         padding: 0; 
     }  
+    
+    @include phones {
+       flex-direction: column;
+    }
 }

@@ -5,7 +5,11 @@
     }  
     @include tablets { 
         width: 100%;
-    }      
+    }  
+    @include phones {
+        width: 90%;
+        margin: 0 auto;
+    }    
 }
 
 .form__row {    
@@ -27,12 +31,23 @@
 
         @include tablets { 
             margin-bottom: 29px;
-        }         
+        } 
+
+        & .form__elem:before {
+            @include phones {
+                margin-bottom: 17px;
+            }
+        }        
     } 
 
     @include tablets { 
         margin-bottom: 30px;
-    }     
+    }   
+
+    @include phones { 
+        flex-direction: column;
+        margin-bottom: 54px;
+    }   
 }
 
 .form__elem {
@@ -58,6 +73,9 @@
         @include tablets { 
             margin-bottom: 7px;
         } 
+        @include phones { 
+            font-size: 14px;
+        } 
     }
 
     &:hover {
@@ -77,13 +95,19 @@
 
     @include tablets { 
         margin-right: 19px;
-    }     
+    }  
+    @include phones {  
+        margin-right: 0;
+        margin-bottom: 15%;
+    }    
 }
 
 .form__elem-container {
     display: flex;
     border-bottom: 2px solid $text-color;
-    
+    @include phones {
+        border-width: 1px;
+    }
 }
 @each $icon in (user, envelope, message) {           
     .form__elem-container--#{$icon}:before {   
@@ -128,6 +152,9 @@
 
         @include tablets { 
             font-size: 14px;
+        }  
+        @include phones { 
+            line-height: 24px;
         }                 
     }
 
@@ -140,7 +167,20 @@
     
     &.form__elem-input--textarea {
         resize: none;
-        line-height: 36px;       
+        line-height: 36px;  
+
+        @include phones {
+            padding: 0;
+            padding-bottom: 15px;            
+            display: block; 
+            text-overflow: ellipsis;
+            word-wrap: break-word;
+            overflow: hidden;
+            max-height: 7.2em;  
+            text-overflow: ellipsis;
+            line-height: 1.8em;            
+            margin-bottom: 8%;
+        }         
     }   
     
     @include desktop { 
@@ -182,5 +222,10 @@
     @include desktop { 
         width: 352px;
         padding: 33px 0;
-    }     
+    }  
+
+      @include phones { 
+        padding: 19px 0;
+        width: 260px;
+    }   
 }

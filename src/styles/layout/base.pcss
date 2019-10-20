@@ -38,6 +38,10 @@ body {
     width: 90%;    
   }
 
+  @include phones {
+    width: 80%;   
+  }
+
 }
 
 .fullscreen-section {
@@ -103,11 +107,19 @@ h2 {
   @include tablets {
     font-size: 30px;
   }   
+
+  @include phones {
+    font-size: 30px;
+  } 
 }
 
 h3 {
   font-size: 30px;
   font-weight: $bold;
+
+    @include phones {
+    font-size: 24px;
+  } 
 }
 
 .maincontent,
@@ -120,7 +132,7 @@ h3 {
   z-index: 10;
  
   background-color: $white-color;
-
+ 
   @include tablets { 
     margin-bottom: 0;
   }
