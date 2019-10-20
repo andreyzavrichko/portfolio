@@ -41,8 +41,16 @@ html(lang="ru")
         .wrappersections.wrappersections--two
           include components/useful  
           include components/skills      
-          include components/work    
-
+            
+          section.work
+            .container
+              .work__title
+                .title
+                  h2.title-elem Мои работы
+              #slider-component 
+                 
+                   
+          
         .wrappersections.wrappersections--end 
           .triangles.triangles--two
             svg(viewBox="0 0 1000 100" preserveAspectRatio="none").triangle__item
@@ -59,3 +67,5 @@ html(lang="ru")
           include components/feedback
       
     include components/footer
+
+             include ./templates/entry.pug
