@@ -15,28 +15,10 @@ html(lang="ru")
           include components/parallax 
         
           section.fullscreen-section.hero
-            .container.hero-container
-              include components/header    
-              .hero__block
-                .hero__profession   
-                  .hero__profession-elem Личный сайт #[span.span-block] веб-разработчика
-                .hero__name
-                  h1.hero__name-elem Андрей Завричко  
-              .hero__scroll
-                .scroll__block
-                  button(type="button").scroll__image
-                   
+            include components/hero-container                              
 
           include components/about
-          .triangles
-            svg(viewBox="0 0 1000 100" preserveAspectRatio="none").triangle__item
-              polygon(
-                points="0,0 0,100 1000,100"
-              )
-            svg(viewBox="0 0 1000 100" preserveAspectRatio="none").triangle__item
-              polygon(
-                points="0,100 1000,100 1000,0"
-              )    
+          include components/triangles              
 
         .wrappersections.wrappersections--two
           include components/useful  
@@ -47,12 +29,11 @@ html(lang="ru")
               .work__title
                 .title
                   h2.title-elem Мои работы
-              #slider-component 
-                 
-                   
+              #slider-component                   
           
         .wrappersections.wrappersections--end 
           include components/budda-parallax
+
           .triangles.triangles--two
             svg(viewBox="0 0 1000 100" preserveAspectRatio="none").triangle__item
               polygon(
