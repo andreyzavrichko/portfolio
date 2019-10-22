@@ -39,7 +39,7 @@ module.exports = (env, argv) => {
     test: /\.(png|jpe?g|gif|woff2?)$/i,
     loader: "file-loader",
     options: {
-      name: "[name].[ext]"
+      name: "[hash].[ext]"
     }
   };
   const ico = {
