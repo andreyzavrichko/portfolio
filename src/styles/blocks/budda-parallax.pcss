@@ -23,13 +23,14 @@
     display: block;
     .budda-parallax__image {
       object-fit: cover;
-      height: auto;
+      width: 100%;
+      height: 100%;
     }
   }
   &:nth-child(2) {
     display: block;    
     .budda-parallax__image {
-      top: 360px;
+      top: 860px;
       right: 0;
       height: auto;
     }
@@ -39,10 +40,9 @@
     width: 25%;
     height: 25%;       
     .budda-parallax__image {
-      left: 50%;
-      top: 518px;
-      transform: translateX(900px);  
-      height: auto;     
+    left: 255%;
+    top: 100%;       
+         
     } 
     
   }
@@ -82,13 +82,11 @@
 
 .budda-parallax__layer:nth-child(3) {
   @include desktopHd {  
-    left: 50%;
-      top: 518px;       
-    transform: translateX(1300px);
+    left: 255%;
+    top: 100%;
   }  
   @include desktop {  
-    left: 50%;
-      top: 518px;       
-    transform: translateX(1300px);
+    left: 255%;
+    top: 100%;
   }   
 }
