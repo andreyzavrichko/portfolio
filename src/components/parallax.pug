@@ -1,9 +1,9 @@
 section.parallax            
             .parallax__layer.parallax__layer--bg              
               +image('content/parallax/mountain/bg.jpg', 'parallax__image-bg', 'Изображение')
-            - for (var numpic=1; numpic<=6; numpic++)
-              - var speed = numpic / 10;
+            - var speeds = [0.1, 1, 0.3, 0.4, 0.5, 0];  
+             each speed, i in speeds              
               .parallax__layer(data-speed=speed)
                 picture
-                  source(srcset=require(`images/content/parallax/mountain/${numpic}_2560.png`) media="(min-width: 1920px)").parallax__layer--bg
-                  +image(`content/parallax/mountain/${numpic}.png`, 'parallax__image', 'Изображение')
+                  source(srcset=require(`images/content/parallax/mountain/${i + 1}_2560.png`) media="(min-width: 1920px)").parallax__layer--bg
+                  +image(`content/parallax/mountain/${i + 1}.png`, 'parallax__image', 'Изображение')
