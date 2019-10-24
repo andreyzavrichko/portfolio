@@ -1,6 +1,50 @@
 .work {
-  .title-elem {
-    margin-bottom: 92px;
-  }
-  margin-bottom: 173px;
+
+    & .container {
+        @include desktop {
+            width: 90%;
+        }
+
+          @include phones {
+           width: 100%;
+        }
+    }
+
+    & .title {
+        margin-bottom: 92px;
+
+        @include desktop {
+            margin-bottom: 60px;
+        }
+
+        @include tablets {
+            margin-bottom: 44px;
+        } 
+
+        @include phones {
+            text-align: center;
+            margin-bottom: 28px;
+        }  
+
+        & .title-elem {
+            @include phones {
+                font-size: 24px;
+            }
+        }       
+    }   
+
+    padding-top: 109px;
+
+    @include desktop {
+        padding-top: 84px;
+    }
+    
+    @include tablets {
+        padding-top: 52px;
+    }
+
+    @include phones {  
+        padding-top: 97px;
+    } 
 }
+

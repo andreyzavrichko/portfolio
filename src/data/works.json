@@ -1,0 +1,34 @@
+[
+  {
+    "id": 1,
+    "title": "Сайт школы образования",
+    "skills": "HTML, Sass, JavaScript, FlexBox",
+    "photo": "slider-image3.jpg",
+    "link": "//rambler.ru",
+    "desc": "Это первый проект"
+  },
+  {
+    "id": 2,
+    "title": "Сайт школы образования",
+    "skills": "HTML, CSS",
+    "photo": "slider-image1.jpg",
+    "link": "//google.com",
+    "desc": "Это второй проект"
+  },
+  {
+    "id": 3,
+    "title": "Сайт школы образования",
+    "skills": "HTML, CSS",
+    "photo": "slider-image2.jpg",
+    "link": "//yandex.ru",
+    "desc": "Это третий проект"
+  },   
+  {
+      "id": 4,
+      "title": "Сайт школы образования",
+      "skills": "HTML, CSS, JavaScript",
+      "photo": "slider-image4.jpg",
+      "link": "//rambler.ru",
+      "desc": "Это четвертый проект"
+    }
+]

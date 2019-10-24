@@ -1,15 +1,79 @@
-.useful {
-  .title {
-    .title-elem {
-      text-align: center;
-      margin-bottom: 59px;
+.useful {    
+    .title {   
+        .title-elem {
+            text-align: center; 
+
+              @include phones {
+                text-align: left;                
+            }                       
+        }
+
+        margin-bottom: 48px;
+
+        @include desktop {
+            margin-bottom: 50px;
+        }
+
+        @include tablets {
+            margin-bottom: 14px;
+        }   
+        @include phones {
+            margin-bottom: 19px;
+        }     
+
+        & .span-block {
+            display: inline;
+
+            @include tablets {
+                display: block;
+            }
+        }        
     }
-  }
-  margin-bottom: 168px;
+
+    padding-top: 139px;
+
+    @include desktop {
+        padding-top: 108px;
+    }
+
+    @include tablets {
+        font-size: 14px;
+        padding-top: 1%;
+    }
+
+    @include phones {
+        padding-top: -1%;
+    }
 }
+
 .useful__description {
-  font-weight: $semi-bold;
-  color: rgba($light-color, 0.4);
-  padding: 0 27%;
-  margin-bottom: 96px;
+    font-weight: $semi-bold;
+    line-height: 30px;
+    color: rgba($light-color, 0.4);
+    padding: 0 27%;
+    margin-left: 7%;   
+
+    margin-bottom: 5.4%;
+
+    @include desktop {
+        margin-bottom: 85px;
+
+        padding:0 20%;
+        line-height: 30px;
+    }
+
+    @include tablets {
+        text-align: center;
+        
+        margin-bottom: 49px;
+        padding: 0 12%;
+        line-height: 24px;        
+    } 
+
+    @include phones {
+        text-align: left;
+        padding: 0;
+        margin-bottom: 48px;
+        margin-left: 0;
+    }  
 }

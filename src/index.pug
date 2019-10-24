@@ -11,36 +11,29 @@ html(lang="ru")
   body
     .wrapper
       main.maincontent
-
         .wrappersections.wrappersections--home
+          include components/parallax 
+        
           section.fullscreen-section.hero
-            .container.hero-container
-              include components/header    
-              .hero__block
-                .hero__profession   
-                  .hero__profession-elem Личный сайт #[span.span-block] веб-разработчика
-                .hero__name
-                  h1.hero__name-elem Андрей Завричко  
-              .hero__scroll
-                .scroll__block
-                  button(type="button").scroll__image  
+            include components/hero-container                              
 
           include components/about
-          .triangles
-            svg(viewBox="0 0 1000 100" preserveAspectRatio="none").triangle__item
-              polygon(
-                points="0,0 0,100 1000,100"
-              )
-            svg(viewBox="0 0 1000 100" preserveAspectRatio="none").triangle__item
-              polygon(
-                points="0,100 1000,100 1000,0"
-              )    
+          include components/triangles              
 
         .wrappersections.wrappersections--two
-          include components/useful          
-          include components/work    
-
+          include components/useful  
+          include components/skills      
+            
+          section.work#works
+            .container
+              .work__title
+                .title
+                  h2.title-elem Мои работы
+              #slider-component                   
+          
         .wrappersections.wrappersections--end 
+          include components/budda-parallax
+
           .triangles.triangles--two
             svg(viewBox="0 0 1000 100" preserveAspectRatio="none").triangle__item
               polygon(
@@ -50,9 +43,10 @@ html(lang="ru")
               polygon(
                 points="0,0 0,100 1000,0"
               )
-
+          
           include components/review 
-
           include components/feedback
-      
-    include components/footer
+          
+        include components/footer
+
+             include ./templates/entry.pug

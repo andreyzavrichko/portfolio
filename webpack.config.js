@@ -42,6 +42,13 @@ module.exports = (env, argv) => {
       name: "[hash].[ext]"
     }
   };
+  const ico = {
+    test: /\.ico$/,
+    loader: "file-loader",
+    options: {
+      name: "favicon.[ext]"
+    }
+  };
 
   const svg = {
     test: /\.svg$/,
@@ -95,7 +102,7 @@ module.exports = (env, argv) => {
       chunkFilename: "[chunkhash].js"
     },
     module: {
-      rules: [pcss, vue, js, files, svg, pug]
+      rules: [pcss, vue, js, files, svg, ico, pug]
     },
     resolve: {
       alias: {

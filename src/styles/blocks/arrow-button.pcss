@@ -1,0 +1,41 @@
+.arrow-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50px;
+  height: 50px;
+  border: none;
+  cursor: pointer;
+  &:disabled {
+    opacity: 0.5;
+    cursor: default;
+  }
+  &_transparent {
+    background: none;
+  }
+  &_gray {
+    background-color: $text-color;
+    &:hover {
+      background-color: $active-menu-color;
+    }
+  }
+  &_circle {
+    border-radius: 50%;
+    border: 1px solid $text-color;
+    &:not(:disabled):hover {
+      border: 1px solid $active-menu-color;
+      .arrow-button__icon {
+        fill: $active-menu-color;
+      }
+    }
+  }
+
+  &__icon {
+    width: 8px;
+    height: 10px;
+    fill: $text-color;
+    &_prev {
+      transform: rotate(-180deg);
+    }
+  }
+}
