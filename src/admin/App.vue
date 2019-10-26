@@ -38,7 +38,7 @@
                 .header__typepanel
                   p Панель администрирования
                 .header__quit
-                  a.header__quit-link Выйти    
+                  a.header__quit-link Выйти
     .main-menu
       nav.menu
         ul.menu__list
