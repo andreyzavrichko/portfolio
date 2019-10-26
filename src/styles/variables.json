@@ -23,5 +23,12 @@
   "bp-desktop-hd": "1800px",
   "bp-desktop": "1200px",
   "bp-tablets": "768px",
-  "bp-phones": "480px"
+  "bp-phones": "480px",
+  "admin-header-color":"#3f3f5e",
+  "admin-link-color":"#383bcf",
+  "admin-button-color-start": "#006aed",
+  "admin-button-color-end": "#3f35cb",
+  "admin-border-bottom-color": "rgba($light-color,.95)",
+  "admin-button-add-color": "#00d70a",
+  "admin-button-discard-color": "#bf2929"
 }
