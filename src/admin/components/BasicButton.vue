@@ -84,15 +84,20 @@ export default {
   position: relative;
   display: flex;
   justify-content: center;
-  align-items: center;
-  padding: 32px 120px;
-  background-image: red;
+  align-items: center;    
   color: white;
   font-size: 18px;
   font-weight: 700;
   transition: background-image 0.2s ease;
   outline: none;
   cursor: pointer;
+  width: 21.6875rem;    
+  background-image: linear-gradient(90deg,#ad00ed,#5500f2);  
+  text-transform: uppercase;
+  font-size: 1.125rem;
+  font-weight: 700;
+  padding: 1.75rem 0;
+  border-radius: 30px 5px;
   @include phones {
     width: 100%;
     padding: 24px 50px;

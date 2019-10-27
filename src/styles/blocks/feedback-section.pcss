@@ -1,0 +1,28 @@
+.feedback-section {
+  position: relative;
+    padding-bottom: 14%;
+    padding-top: 12%;
+    .title {
+        margin-bottom: 4.6%;
+        
+        @include desktop { 
+            margin-bottom: 7.5%;
+        }   
+
+        @include tablets { 
+            text-align: center;
+            margin-bottom: 6.5%;
+        }  
+
+        @include phones {  
+            margin-bottom: 16.5%;
+        } 
+
+        & .title__elem {
+            @include phones {
+                font-size: 24px;
+            }
+        }              
+    }
+  
+}

@@ -93,22 +93,22 @@ export default {
     border-radius: 0;
     background: none;
     border: none;
-    border-bottom: 1px solid red;
+    border-bottom: 2px solid $light-gray;
     outline: none;
     transition: border 0.2s ease;
     &:focus {
-      border-bottom-color: red;
+      border-bottom-color: $active-menu-color;
     }
     &_invalid,
     &_invalid:focus {
-      border-bottom-color: red;
+      border-bottom-color: $danger-color;
     }
     @include desktop {
       font-size: 14px;
     }
   }
   &_light &__control {
-    color: white;
+    color: #414c63;
   }
   &__icon {
     position: absolute;
@@ -121,15 +121,16 @@ export default {
     pointer-events: none;
   }
   &_light &__icon {
-    fill: rgba(255, 255, 255, 0.3);
+    
   }
   &__control:focus ~ &__icon,
-  &__control_dirty ~ &__label {
-    fill: $accent-color;
+  &__control_dirty ~ &__label,
+  &__control:hover ~ &__icon {
+    fill: $active-menu-color;
   }
   &__control_invalid ~ &__icon,
   &__control_invalid:focus ~ &__icon {
-    fill: red;
+    fill: $danger-color;
   }
   &__label {
     position: absolute;
@@ -148,7 +149,7 @@ export default {
     }
   }
   &_light &__label {
-    color: rgba(255, 255, 255, 0.3);
+    
   }
   &__control:focus ~ &__label,
   &__control_dirty ~ &__label {
@@ -161,7 +162,7 @@ export default {
     left: 45px;
     padding: 0 20px;
     color: white;
-    background-color: red;
+    background-color: $danger-color;
     font-size: 14px;
     font-weight: 400;
     line-height: 48px;
@@ -171,7 +172,7 @@ export default {
       position: absolute;
       bottom: 100%;
       left: 50%;
-      border: 3px solid red;
+      border: 3px solid $danger-color;
       border-left-width: 5px;
       border-right-width: 5px;
     }
@@ -197,5 +198,8 @@ export default {
     transform: translateY(50%);
     opacity: 0;
   }
+}
+.basic-input_light .basic-input__control:hover {
+  border-bottom-color: $active-menu-color;
 }
 </style>

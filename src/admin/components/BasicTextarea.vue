@@ -93,12 +93,12 @@ export default {
     line-height: 36px;
     background: none;
     border: none;
-    border-bottom: 1px solid $light-gray;
+    border-bottom: 2px solid $light-gray;
     outline: none;
     transition: border 0.2s ease;
     resize: none;
     &:focus {
-      border-bottom-color: $accent-color;
+      border-bottom-color: $active-menu-color;
     }
     &_invalid,
     &_invalid:focus {
@@ -109,7 +109,7 @@ export default {
     }
   }
   &_light &__control {
-    color: white !important;
+    color: #414c63 !important;
   }
   &__icon {
     position: absolute;
@@ -122,11 +122,12 @@ export default {
     pointer-events: none;
   }
   &_light &__icon {
-    fill: rgba(255, 255, 255, 0.3);
+    
   }
   &__control:focus ~ &__icon,
-  &__control_dirty ~ &__label {
-    fill: $accent-color;
+  &__control_dirty ~ &__label,
+  &__control:hover ~ &__icon {
+    fill: $active-menu-color;
   }
   &__control_invalid ~ &__icon,
   &__control_invalid:focus ~ &__icon {
@@ -149,7 +150,7 @@ export default {
     }
   }
   &_light &__label {
-    color: rgba(255, 255, 255, 0.3);
+    
   }
   &__control:focus ~ &__label,
   &__control_dirty ~ &__label {
@@ -197,5 +198,8 @@ export default {
     transform: translateY(50%);
     opacity: 0;
   }
+}
+.basic-textarea_light .basic-textarea__control:hover {
+  border-bottom-color: $active-menu-color;
 }
 </style>
