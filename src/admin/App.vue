@@ -1,28 +1,8 @@
 <template lang="pug">
-  .wrapper.wrapper--admin    
-    .login
-      .container
-        form.login__form#form
-          .login__close
-            button(type="button").login__close-btn
-          .login__title-box
-            h1.login__title Авторизация
-          .form__wrapper
-            .form__row           
-              label.form__elem(data-text="Логин")
-                .form__elem-container.form__elem-container--user
-                  input(type="text" placeholder="Terminator_2000").form__elem-input
-                  .form__tooltip
-                    .form__tooltip-text 
-            .form__row
-              label.form__elem(data-text="Пароль")
-                .form__elem-container.form__elem-container--key
-                  input(type="password" placeholder="••••••••••").form__elem-input
-                  .form__tooltip
-                    .form__tooltip-text 
-            .form__row
-              label.form__elem.form__elem--button
-                button(type="submit").form__elem-button Отправить
+  .app
+    .login-page
+      .login-page__form
+        login-form
     header.header
       .container
         .header__wrapper
@@ -45,8 +25,7 @@
           - var menuList = ['Обо мне', 'Работы', 'Отзывы'];
           - for (var i=0; i<menuList.length; i++)
             li.menu__item
-              a(href="#" title=`${menuList[i]}`).menu__link #{menuList[i]}                       
-    
+              a(href="#" title=`${menuList[i]}`).menu__link #{menuList[i]} 
     main.maincontent.maincontent--admin               
 
       section.about
@@ -328,17 +307,19 @@
                       .btns(data-text="Править")
                         button(type="button").button.button--edit                         
                       .btns(data-text="Удалить")
-                        button(type="button").button.button--discard                              
-    .modal
-      .modal__window
-        .modal__title Письмо отправлено
-        button(type="button").form__elem-button.modal__button Закрыть 
-      .modal__tooltip.green
-        .modal__tooltip-text Сообщение отправлено
-        .modal__tooltip-close
+                        button(type="button").button.button--discard  
 </template>
 
-<script></script>
+<script>
+import LoginForm from './components/LoginForm.vue';
+
+export default {
+  name:"Main",
+  components: {    
+    LoginForm
+  }
+}
+</script>
 
 
 

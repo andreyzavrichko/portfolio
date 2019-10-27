@@ -1,5 +1,98 @@
+<template lang="pug">
+  .login
+    .container
+      form.login__form#form(@submit.prevent="signIn")
+        .login__close
+          button(type="button").login__close-btn(@click="exitFromAdmin")
+        .login__title-box
+          h1.login__title Авторизация
+        .form__wrapper-login
+          .form__row           
+            label.form__elem(data-text="Логин") 
+              .form__elem-container.form__elem-container--user
+                input(
+                  v-model="name" 
+                  :error-mesage="validation.firstError('name')"                  
+                  ).form__elem-input                  
+                .form__tooltip 
+                  .form__tooltip-text 
+          .form__row
+            label.form__elem(data-text="Пароль") 
+              .form__elem-container.form__elem-container--key
+                input(
+                  v-model="password"                   
+                  type="password" 
+                  :error-mesage="validation.firstError('password')"
+                  ).form__elem-input
+                .form__tooltip
+                  .form__tooltip-text 
+          .form__row
+            label.form__elem.form__elem--button
+              button(type="submit" :disabled="isLoading").form__elem-button Отправить
+</template>
+
+<script>
+import Vue from "vue";
+import axios from "axios";
+import SimpleVueValidation from "simple-vue-validator";
+import BasicInput from './BasicInput.vue';
+import BasicButton from './BasicButton.vue';
+
+Vue.use(SimpleVueValidation);
+const Validator = SimpleVueValidation.Validator;
+
+export default {
+  mixins: [SimpleVueValidation.mixin],
+  data() {
+    return {
+      name: "",
+      password: "",
+      isLoading: false      
+    };
+  },
+  validators: {
+    name: function(value) {
+    return Validator.value(value).required("Заполните логин");  
+    },
+    password: function(value) {
+    return Validator.value(value).required("Введите пароль").minLength(4, "минимум 4 символа");  
+    },
+  },
+  methods: {
+    signIn() {
+      this.$validate().then(success => {
+        if (success) {
+          this.login();
+        }
+      });
+    },
+    login() {
+      this.isLoading = true;
+      axios
+        .post("https://webdev-api.loftschool.com/login", { 
+          name: this.name,
+          password: this.password
+          })
+          .then(() => {
+            alert("OK");
+          })
+          .catch(e => {
+            alert(e.response.data.error);         
+          });   
+          this.password = "";
+          this.isLoading = false;   
+    },
+    exitFromAdmin() {
+      location.href = "https://andreyzavrichko.github.io/portfolio";
+   },
+  },
+};  
+</script>
+
+<style lang="postcss">
+@import '../../styles/mixins.pcss';
 .login {
-    background-image: url('../images/content/bg/mountain-baloon.jpg');
+    background-image: url('../../images/content/bg/mountain-baloon.jpg');
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center center;
@@ -140,9 +233,6 @@
         }
     }
 }
-
-
-
 .login__close {
     position: absolute;
     right: 30px;
@@ -154,3 +244,6 @@
     height: 20px;
     background: svg-load('cross.svg', fill=rgba(black, .7)) center center no-repeat / contain;
 }
+
+
+</style>
