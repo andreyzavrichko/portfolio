@@ -199,7 +199,5 @@ export default {
     opacity: 0;
   }
 }
-.basic-textarea_light .basic-textarea__control:hover {
-  border-bottom-color: $active-menu-color;
-}
+
 </style>

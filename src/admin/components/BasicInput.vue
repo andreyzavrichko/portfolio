@@ -199,7 +199,5 @@ export default {
     opacity: 0;
   }
 }
-.basic-input_light .basic-input__control:hover {
-  border-bottom-color: $active-menu-color;
-}
+
 </style>
