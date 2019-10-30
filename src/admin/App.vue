@@ -143,7 +143,7 @@
                             - var tagList = ['JQuery', 'Vue.js', 'HTML5'];
                             - for (i=0; i<tagList.length; i++)
                               li.form__item
-                                button(type="button").button.button--tag #{tagList[i]}
+                                .button-desk.button--tag #{tagList[i]}
                                 .button-tagdelete
                                   button(type="button").button.button--discard
                     .form__row.form__row--btns
