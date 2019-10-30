@@ -192,7 +192,7 @@
             ul.works__list 
               li.works__item.works__item--add
                 .btn-container
-                  .btn-container__add
+                  button(type="button").btn-container__add
                     .btn-container__add-button +
                     .btn-container__add-title Добавить #[span.span-block] работу
               each work in worksList            
@@ -286,7 +286,7 @@
               
           .reviews__listwrapper
             ul.reviews__list
-              li.reviews__item.reviews__item--add
+              button(type="button").reviews__item.reviews__item--add
                 .btn-container
                   .btn-container__add
                     .btn-container__add-button +
