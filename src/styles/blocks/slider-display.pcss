@@ -1,6 +1,6 @@
 .slider-display {
   position: relative;
-  overflow: hidden;
+  
   width: 100%;
   height: 30vw;
   @include desktop {
@@ -49,15 +49,24 @@
   }
   &__thumbs {
     position: absolute;
-    right: -247px;    
+    right: -909px;   
+    top: 128px; 
     overflow: hidden;
     z-index: 1;
     @include desktopHd {
-      width: 534px;
-      bottom: 30px;
+      
+      bottom: 8px;
+      right: -48.3rem;
+      top: 6.9rem;
+    }
+    @include desktop {
+      bottom: 0.5rem;
+      right: -63.9rem;
+      top: 1rem;
     }
     @include tablets {
-      width: 356px;
+      
+     
     }
     @include phones {
       display: none;
@@ -68,18 +77,27 @@
   }
   &__buttons {
     position: absolute;
-    left: calc(100% - 13vw);
-    top: calc(100% - 3vh);
+    left: calc(100% - 11.3vw);
+    top: calc(100% - -2.5vh);
     transform: rotate(90deg);
     bottom: 60px;
     z-index: 1;
     @include desktopHd {
       bottom: 30px;
+      left: calc(100% - 11vw);
+      top: calc(100% - -1.9vh);
+    }
+    @include desktop {
+      
+    }
+    @include tablets {
+      top: calc(100% - -2.6vh);
     }
     @include phones {
+      right: 0px;
+      top: 135px;
+      bottom: 0px;
       left: auto;
-      right: 0;
-      bottom: 0;
     }
   }
 }

@@ -2,14 +2,17 @@
   
   &__item {
     position: relative;
-    width: 25%;
+    width: 14%;
     flex-shrink: 0;
     cursor: pointer;
+    @include desktopHd{
+      width: 20%
+    }
     @include desktop {
-      width: calc(100% / 3);
+      width: 14%
     }
     @include tablets {
-      width: 50%;
+      width: 14%;
     }
     &::after {
       content: '';
