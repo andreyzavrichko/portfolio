@@ -108,6 +108,7 @@ export default {
 
   &_disabled {
     cursor: default;
+    background-image: linear-gradient(90deg,#ccc,#ccc); 
     &:hover {
       background-image: red;
     }

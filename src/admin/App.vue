@@ -190,7 +190,7 @@
             ];
           .works__listwrapper
             ul.works__list 
-              li.works__item.works__item--add
+              button(type="button").works__item.works__item--add
                 .btn-container
                   button(type="button").btn-container__add
                     .btn-container__add-button +
