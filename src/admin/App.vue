@@ -311,16 +311,16 @@
 </template>
 
 <script>
+import Icon from './components/Icon.vue';
 import LoginForm from './components/LoginForm.vue';
 
 export default {
-  name:"Main",
-  components: {    
+  components: {
+    Icon,
     LoginForm
   }
 }
 </script>
-
 
 
 <style lang="postcss">
