@@ -5,13 +5,31 @@
         margin: 0 auto;
     }
 
-    & .menu__link {
-        &:hover {
-            color: $admin-link-color;
-            border-bottom-color: $admin-link-color;
-        }
+    & .menu__link--admin {
+    display: inline-block;
+    padding: 40px 32px;
+    border-bottom: 3px solid transparent;
+    transition: border-bottom-color .2s;    
+    &:active {
+        color: rgba($active-menu-color,1);
+        font-weight: $bold;
+        border-bottom-color: $active-menu-color;
+    } 
+    &:after { 
+        display: block;
+        content: attr(title);
+        font-weight: bold;
+        height: 0;
+        overflow: hidden;
+        visibility: hidden;        
+    }
 
-        @include phones {
+    @include desktop { 
+        white-space: nowrap;
+        padding: 40px 29px;
+    }    
+        
+            @include phones {
             padding-right: 21px;
             padding-left: 21px;
         }
@@ -19,4 +37,9 @@
     
     background-color: $white-color;
     margin-bottom: 60px;
+}
+
+.menu__link:active {
+    color: $admin-link-color;
+    border-bottom-color: $admin-link-color;
 }

@@ -61,12 +61,12 @@
         
 
         @include tablets {
-            width: 60%;
+            width: 53%;
             padding-left: 5px;
         }
 
         @include phones {
-            width: 50%;
+            width: 45%;
         }
     }
 
@@ -77,7 +77,10 @@
             width: 65px;
 
             @include tablets {
-                width: 37px;
+                width: 55px;
+            }
+            @include phones {
+                width: 53px;
             }
         }
 
@@ -248,6 +251,12 @@
                 padding: 8px 12px;
 
                 background-color: rgba($light-color, .2);
+                @include tablets {
+                    padding: 8.2px 10px;
+                }
+                @include phones {
+                    padding: 7px 10px;
+                }
             }
 
             & .button-tagdelete {
@@ -439,8 +448,37 @@
 
         & .button--cancel {
             @include phones {
-                margin-right: 10px;
+                margin-right: 0px;
             }
         }
+    }
+}
+
+.form__elem--number {
+    @include tablets {
+    margin-left: -50px;
+    &:after {
+    margin-left: -17px;
+    margin-right: 5px;
+    }
+    }
+    @include phones {
+    margin-left: -50px;
+    &:after {
+        margin-left: -17px;
+        margin-right: 5px;
+        }
+    }
+}
+
+.button.button--cancel  {
+    @include phones {
+        margin-right: 0px; 
+    }
+}
+
+.button.button--save {
+    @include phones {
+        margin-bottom: 25px;
     }
 }

@@ -2,6 +2,9 @@
     display: flex;
     flex-wrap: wrap;
     margin-right: -53px;
+    @include phones {
+       margin-right: -35px;  
+    }
 }
 
 .groups__item {    
@@ -29,6 +32,7 @@
     } 
 
     @include phones { 
-        padding: 0 1%;
+        width: 310px;
+        padding: 0 0;
     }
 }

@@ -25,7 +25,7 @@
           - var menuList = ['Обо мне', 'Работы', 'Отзывы'];
           - for (var i=0; i<menuList.length; i++)
             li.menu__item
-              a(href="#" title=`${menuList[i]}`).menu__link #{menuList[i]} 
+              a(href="#" title=`${menuList[i]}`).menu__link--admin #{menuList[i]} 
     main.maincontent.maincontent--admin               
 
       section.about
