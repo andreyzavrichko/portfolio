@@ -49,23 +49,19 @@
   }
   &__thumbs {
     position: absolute;
-    right: -909px;   
-    top: 128px; 
+    right: 10vw;
+    bottom: 0;
+    width: 178px;
+    height: 400px; 
     overflow: hidden;
     z-index: 1;
     @include desktopHd {
-      
-      bottom: 8px;
-      right: -48.3rem;
-      top: 6.9rem;
+       height: 300px; 
+     
     }
-    @include desktop {
-      bottom: 0.5rem;
-      right: -63.9rem;
-      top: 1rem;
-    }
+    
     @include tablets {
-      
+      height: 200px;
      
     }
     @include phones {
@@ -73,31 +69,21 @@
     }
   }
   &__thumbs-list {
+    width: 100%;
+    height: 100%;
     transition: transform 0.2s ease;
   }
   &__buttons {
     position: absolute;
-    left: calc(100% - 11.3vw);
-    top: calc(100% - -2.5vh);
-    transform: rotate(90deg);
+    right: 10vw;
+    top: 100%;
     bottom: 60px;
     z-index: 1;
-    @include desktopHd {
-      bottom: 30px;
-      left: calc(100% - 11vw);
-      top: calc(100% - -1.9vh);
-    }
-    @include desktop {
-      
-    }
-    @include tablets {
-      top: calc(100% - -2.6vh);
-    }
-    @include phones {
-      right: 0px;
-      top: 135px;
-      bottom: 0px;
-      left: auto;
+   
+    @include phones {      
+      top: auto;
+      bottom: 0;
+      right: 0;
     }
   }
 }
