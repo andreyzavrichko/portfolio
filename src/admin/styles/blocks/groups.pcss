@@ -1,8 +1,10 @@
 .groups__list {
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 1%;    
     margin-right: -53px;
     @include phones {
+       grid-template-columns: 1fr;
        margin-right: -35px;  
     }
 }
