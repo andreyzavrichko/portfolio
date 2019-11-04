@@ -16,4 +16,7 @@ header.header#main
                       each social in socials   
                         li.social__item 
                           a(href="#").social__link  
-                            +icon(social, 'social__icons')
+                            +icon(social, 'social__icons')  
+                #mobile-nav.mobile-nav
+                  - for (var i=0; i<3; i++)                
+                    .mobile-nav__line                                     
