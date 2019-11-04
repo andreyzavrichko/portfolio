@@ -1,0 +1,48 @@
+.slider-thumbs {
+  width: 100%;
+  height: 100%;
+  &__item {
+    position: relative;
+    width: 100%;
+    height: 25%;
+    flex-shrink: 0;
+    cursor: pointer;
+    @include desktopHd{
+      height: calc(100% / 3);
+    }
+    @include desktop {
+      height: calc(100% / 3);
+    }
+    @include tablets {
+       height: 50%;
+    }
+    &::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      opacity: 0;
+      z-index: 1;
+      transition: opacity 0.2s ease;
+    }
+    &_active::after {
+      border: 3px solid $active-menu-color;
+    }
+    &:hover,
+    &_active {
+      &::after {
+        opacity: 1;
+      }
+    }
+    &:hover::after {
+      background-color: rgba($active-menu-color, 0.3);
+    }
+  }
+  &__image {
+    width: 100%;
+    object-fit: cover;
+    object-position: top center;
+  }
+}

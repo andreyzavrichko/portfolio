@@ -1,5 +1,5 @@
 {
-  "accent-color": "#ff9a00",
+  "accent-color": "#5500f2",
   "text-color": "#414c63",
   "links-color": "#4b6fd7",
   "light-color": "#414c63",
@@ -14,7 +14,16 @@
   "linear-startcolor-hover": "#bb02ff",
   "linear-endcolor-hover": "#610cff",
   "active-menu-color": "#5500f2",
-  "star-color": "#df1b19",  
+  "star-color": "#df1b19", 
+  "error-color": "#cd1515",
+  "green-color": "#4bb133",
+  "brown-color": "#b18333",
+  "red-color": "#b13333",
+  "dark-gray": "#1b1f22",
+  "light-gray": "#898989",
+  "extra-light-gray": "#f0f0f0",
+  "danger-color": "#bf2929",
+  "success-color": "#00d70a", 
   "light": 300,
   "regular": 400,
   "semi-bold": 600,
@@ -23,5 +32,12 @@
   "bp-desktop-hd": "1800px",
   "bp-desktop": "1200px",
   "bp-tablets": "768px",
-  "bp-phones": "480px"
+  "bp-phones": "480px",
+  "admin-header-color":"#3f3f5e",
+  "admin-link-color":"#383bcf",
+  "admin-button-color-start": "#006aed",
+  "admin-button-color-end": "#3f35cb",
+  "admin-border-bottom-color": "rgba($light-color,.95)",
+  "admin-button-add-color": "#00d70a",
+  "admin-button-discard-color": "#bf2929"
 }

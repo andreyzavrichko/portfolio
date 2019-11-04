@@ -1,0 +1,155 @@
+.reviews__title{
+    margin-bottom: 62px;
+
+    @include tablets {  
+           
+        padding: 0 3%;
+    }
+}
+
+.reviews-edit {
+    background-color: $white-color;
+    width: 100%;
+    box-shadow: 0 0 8px 0px $admin-border-bottom-color; 
+}
+
+.reviews__list {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 30px; 
+    
+    @include desktop {
+        grid-template-columns: 1fr 1fr;
+    }
+    @include tablets {
+        grid-template-columns: 1fr;
+    }
+}
+
+.reviews__item {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+
+    
+    background-color: $white-color;
+    box-shadow: 0 0 8px 0px $admin-border-bottom-color; 
+
+    
+
+    padding: 20px;
+
+    &:last-child {
+        
+    }
+
+    &.reviews__item--add {
+        background-image: linear-gradient(to right, $admin-button-color-start, $admin-button-color-end); 
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        @include tablets {
+            
+
+            align-items: flex-start;
+        }
+    }
+
+    @include tablets {
+        
+        padding: 30px 0;
+    }
+}
+
+.reviews__autor {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+
+    padding: 0 12px;
+    padding-bottom: 30px;
+    margin-bottom: 30px;
+
+    border-bottom: 1px solid $admin-border-bottom-color;
+
+    @include tablets {
+        justify-content: flex-start;        
+    }
+}
+
+.reviews__autor-left {
+    & .avatar {
+        margin-right: 7%;
+        padding: 0;
+        @include tablets {
+            margin-right: 20px;       
+        }
+    }
+}
+
+.reviews__autor-right {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-around;
+}
+
+.reviews__name {
+    font-size: 18px;
+    font-weight: $bold;
+    
+    @include tablets {
+        margin-bottom: 7px;
+        font-size: 16px;
+    }
+}
+
+.reviews__titul {
+    font-size: 16px;
+    font-weight: 30px;
+    color: rgba($text-color, .4);
+
+    @include tablets {
+        font-size: 14px;
+    }
+}
+
+.reviews__description {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    height: 100%;
+
+    @include tablets {
+        padding: 0 3%;
+    }
+
+    & .btns-wrap {
+        @include tablets {
+           margin-bottom: 0;
+        }
+    }
+}
+
+.reviews__text {
+    font-size: 16px;
+    font-weight: $semi-bold;
+    color:$text-color;
+    line-height: 30px;
+
+    margin-bottom: 60px;
+
+    @include tablets {
+        margin-bottom: 30px;
+        font-size: 14px;
+    }
+}
+
+.reviews__listwrapper {
+    @include tablets {
+        widht: 98%;
+    }
+}

@@ -1,0 +1,39 @@
+.groups__list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 30px;    
+    
+    @include tablets {
+       grid-template-columns: 1fr;
+        
+    }
+}
+
+.groups__item {    
+       
+    height: 390px;      
+    box-shadow: 0 0 8px 0px $admin-border-bottom-color;
+
+    
+
+    &:last-child {
+        
+    }
+
+    &.groups__item--group {
+        & .form__header {
+            & .form__elem-input {
+                border-bottom: 1px solid transparent; 
+            }
+        }    
+    }
+
+    @include tablets { 
+        
+    } 
+
+    @include tablets { 
+        
+        padding: 0 0;
+    }
+}

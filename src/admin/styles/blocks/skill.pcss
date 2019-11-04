@@ -1,0 +1,50 @@
+.skill {
+    width: 100%;
+    font-size: 16px;
+    font-weight: $regular;
+    color: rgba(black, .9);
+    
+}
+
+.skill__table {
+    width: 100%;
+}
+
+.skill__table-row {
+    height: 40px;
+}
+
+.skill__name {
+    width: 65%;
+    
+    @include tablets { 
+        width: 55%;
+    } 
+}
+
+.skill__percent {
+    color: $admin-border-bottom-color;
+}
+
+.skill__name-input-wrapper {
+    &.no-edit input{        
+        border-bottom-color: transparent;
+        @include desktop {
+            margin-right: -18px;
+        }
+    }
+
+    & .form__elem--number:after {
+        content: "%";
+        display: inline-block;
+        font-weight: inherit;
+        font-size: inherit;
+        color: inherit;
+    }
+
+    & .form__elem-input {
+        padding: 0;
+        margin: 0;
+        font-weight: $regular;
+    }
+}

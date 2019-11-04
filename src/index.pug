@@ -45,8 +45,11 @@ html(lang="ru")
               )
           
           include components/review 
-          include components/feedback
           
+          section.feedback-section
+            .container
+              #form-container
+              include components/feedback-form
         include components/footer
 
              include ./templates/entry.pug

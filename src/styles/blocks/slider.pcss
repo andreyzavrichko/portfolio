@@ -76,10 +76,7 @@
         max-height: 357px;
     }
 
-    @include phones { 
-        max-width: 328px;
-        max-height: 184px;
-    }
+    
 }
 
 .slider__workimages{
@@ -101,17 +98,18 @@
 .slider__item {
     cursor: pointer; 
     position: relative;
-    &.active {
-   
-    outline: 3px solid $active-menu-color;
+    &.active {   
+    border: 3px solid $active-menu-color;
     z-index: 10;
         &:focus {
         border: 3px solid $active-menu-color;
         outline: 3px solid $active-menu-color;
         z-index: 10;
         }
-    }
+        
+         
 }
+
 .slider__preview-icon,
 .slider__image-icon {
     object-fit: cover;
@@ -130,7 +128,9 @@
         height: 100%;
         background-color: rgba(transparent,0);  
         transition: background-color .3s;
-    }   
+    }  
+    
+    } 
 
     &:hover {
         &:before {
@@ -287,3 +287,4 @@
         font-size: 14px;       
     } 
 }
+

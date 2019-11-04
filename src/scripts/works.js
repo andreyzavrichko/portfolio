@@ -1,118 +1,178 @@
 import Vue from 'vue';
+import works from '../data/works';
+import constants from '../styles/variables.json';
 
-const tags = {
-    template: "#slider-tags",
-    props: {
-        tagsArray: Array
-    }
+const sliderThumbs = {
+  template: '#slider-thumbs',
+  props: {
+    works: {
+      type: Array,
+    },
+    currentIndex: {
+      type: Number,
+    },
+  },
 };
 
-const thumbs = {
-    template: "#slider-thumbs",
-    props: { 
-        works: Array,
-        currentWork: Object
-    }
+const sliderTags = {
+  template: '#slider-tags',
+  props: {
+    tags: {
+      type: Array,
+    },
+  },
 };
 
-const btns = {
-    template: "#slider-btns"
+const sliderButtons = {
+  template: '#slider-buttons',
+  props: {
+    isDisabledPrev: {
+      type: Boolean,
+    },
+    isDisabledNext: {
+      type: Boolean,
+    },
+  },
+  methods: {
+    onPrevButtonClick() {
+      if (!this.isDisabledPrev) {
+        this.$emit('prev-slide');
+      }
+    },
+    onNextButtonClick() {
+      if (!this.isDisabledNext) {
+        this.$emit('next-slide');
+      }
+    },
+  },
 };
 
-const display = {
-    template: "#slider-display",
-    components: {
-        btns,   
-        thumbs    
+const sliderDisplay = {
+  template: '#slider-display',
+  components: {
+    sliderThumbs,
+    sliderButtons,
+  },
+  props: {
+    works: {
+      type: Array,
     },
-    props: {    
-        works: Array, 
-        currentWork: Object,
-        currentIndex: Number
+    currentWork: {
+      type: Object,
     },
-    computed: {
-        
-        reversedWorks() {
-            const works = [...this.works]; 
-            return works.reverse();
-        }
-    }
+    currentIndex: {
+      type: Number,
+    },
+  },
+  watch: {
+    currentIndex(currentIndex) {
+      if (currentIndex < this.offset) {
+        this.offset = currentIndex;
+      } else if (currentIndex > this.offset + this.maxThumbsCount - 1) {
+        this.offset = currentIndex - this.maxThumbsCount + 1;
+      }
+    },
+  },
+  data() {
+    return {
+      windowWidth: 0,
+      offset: 0,
+    };
+  },
+  computed: {
+    maxThumbsCount() {
+      if (this.windowWidth < parseInt(constants['bp-phones'])) {
+        return 0;
+      }
+      if (this.windowWidth < parseInt(constants['bp-tablets'])) {
+        return 2;
+      }
+      if (this.windowWidth < parseInt(constants['bp-desktop-hd'])) {
+        return 3;
+      }
+      return 4;
+    },
+  },
+  methods: {
+    goToPrevSlide() {
+      if (this.currentIndex > 0) {
+        this.goToSlide(this.currentIndex - 1);
+      }
+    },
+    goToNextSlide() {
+      if (this.currentIndex < this.works.length - 1) {
+        this.goToSlide(this.currentIndex + 1);
+      }
+    },
+    goToSlide(index) {
+      this.$emit('change-slide', index);
+    },
+    setWindowWidth() {
+      this.windowWidth = window.innerWidth;
+    },
+  },
+  mounted() {
+    this.setWindowWidth();
+  },
+  created() {
+    window.addEventListener('resize', this.setWindowWidth);
+  },
+  beforeDestroy() {
+    window.removeEventListener('resize', this.setWindowWidth);
+  },
 };
 
-const info = {
-    template: "#slider-info",
-    components: {
-        tags    
+const sliderInfo = {
+  template: '#slider-info',
+  components: {
+    tags: sliderTags,
+  },
+  props: {
+    skills: {
+      type: Array,
     },
-    computed: {
-        tagsArray() {
-            return this.currentWork.skills.split(',');
-        }
+    title: {
+      type: String,
     },
-    props: {
-        currentWork: Object
-    }
+    desc: {
+      type: String,
+    },
+    link: {
+      type: String,
+    },
+  },
 };
 
-new Vue ({
-    el:"#slider-component",  
-    template: "#slider-container", 
-    components: {
-        display,    
-        info    
+new Vue({
+  el: '#slider-component',
+  template: '#slider-container',
+  components: {
+    sliderDisplay,
+    sliderInfo,
+  },
+  data() {
+    return {
+      works: [],
+      currentWorkIndex: 0,
+    };
+  },
+  computed: {
+    currentWork() {
+      return this.works[this.currentWorkIndex];
     },
-    data() {    
-        return {
-            works: [],   
-            currentIndex: 0 
-        };
+  },
+  methods: {
+    changeSlide(value) {
+      this.currentWorkIndex = value;
     },
-    computed: { 
-        currentWork() { 
-            return this.works[this.currentIndex];
-        }
+    makeArrayWithRequiredImages(data) {
+      return data.map((item) => ({
+        ...item,
+        photo: require(`../images/content/work/${item.photo}`),
+      }));
     },
-    watch: { 
-        currentIndex(value) {
-            this.makeInfiniteLoopForCurrentIndex(value);
-        }
-    },
-    methods: { 
-        makeInfiniteLoopForCurrentIndex(value) {
-            const worksAmount = this.works.length - 1; 
-            if (value > worksAmount) this.currentIndex = 0; 
-            if (value < 0) this.currentIndex = worksAmount;
-        },
-        
-        makeArrWithRequiredImages(data) {
-            return data.map( item=>{ 
-                const requiredPic = require(`../images/content/work/${item.photo}`);
-                item.photo = requiredPic;
-
-                return item;
-            });
-        },
-        
-        handleSlide(direction) {
-            switch (direction) {
-                case 'next':
-                    this.currentIndex++;
-                    break;
-                case 'prev':
-                    this.currentIndex--;
-                    break;
-            }
-        },
-        
-        handleClickThumbs(currentIDthumbs) {
-            this.currentIndex = currentIDthumbs-1;  
-        }
-    },
-    created() { 
-        const data = require('../data/works.json');
-        this.works = this.makeArrWithRequiredImages(data);
-    }
+  },
+  created() {
+    this.works = this.makeArrayWithRequiredImages(works);
+  },
 });
-
-
-

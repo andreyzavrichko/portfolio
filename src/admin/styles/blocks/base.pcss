@@ -1,0 +1,47 @@
+h1 {
+    font-size: 18px;
+    font-weight: $regular;    
+}
+
+h2 {
+    font-size: 21px;
+    font-weight: $bold;
+}
+
+h3 {
+    font-size: 18px;
+    font-weight: $bold;
+}
+
+.wrapper--admin {
+    background-image: url('../images/content/bg/admin.jpg');
+    background-size: 100vw 100vh;
+}
+
+.maincontent--admin {
+    max-width: 1080px;
+    margin: 0 auto;
+    background-color: transparent;    
+}
+
+.container {
+    width: 100%;
+    max-width: 100%;
+    @include desktopHd {
+        width: 95%;
+    }
+    @include tablets { 
+        width: 95%;
+    } 
+
+    @include phones {
+        width: 100%;
+    }
+}
+a:hover {
+    opacity: 0.5;
+}
+
+.login-page {
+    background-image: url('../images/content/bg/admin.jpg');
+}
