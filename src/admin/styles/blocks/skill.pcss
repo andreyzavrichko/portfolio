@@ -3,6 +3,7 @@
     font-size: 16px;
     font-weight: $regular;
     color: rgba(black, .9);
+    
 }
 
 .skill__table {
@@ -28,6 +29,9 @@
 .skill__name-input-wrapper {
     &.no-edit input{        
         border-bottom-color: transparent;
+        @include desktop {
+            margin-right: -18px;
+        }
     }
 
     & .form__elem--number:after {
