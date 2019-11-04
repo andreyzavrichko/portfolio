@@ -148,6 +148,11 @@
     padding: 0 10px;
     display: flex;
 
+    @include desktop {
+        flex-direction: column;
+        padding: 0 110px;
+    }
+
     @include tablets {
         flex-direction: column;
         padding: 0 110px;
@@ -168,6 +173,9 @@
 
         margin-right: 29px;
 
+        @include desktop {
+            margin: auto;
+        }
         @include tablets {
             margin-right: 0;
             text-align: center;
@@ -295,6 +303,10 @@
     & .form__row--btns {
         text-align: right;
 
+        @include desktop {
+            text-align: center;
+        }
+
         @include tablets {
             text-align: center;
         }
@@ -322,6 +334,11 @@
     }
 
     & .form-edit__wrapper {
+        @include desktop {
+            display: flex;
+            flex-direction: row;
+            padding: 0 5px;
+        }
         @include tablets {
             display: flex;
             flex-direction: row;
@@ -381,6 +398,9 @@
     .form-edit__right {
         width: 65%;
 
+        @include desktop {
+            width: 100%;
+        }
         @include tablets {
             width: 100%;
         }
@@ -396,6 +416,9 @@
         & .form__row--inputs {
             display: flex;
 
+            @include desktop {
+                flex-direction: column;
+            }
             @include tablets {
                 flex-direction: column;
             }
