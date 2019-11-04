@@ -1,24 +1,23 @@
 .groups__list {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-gap: 1%;    
-    margin-right: -53px;
-    @include phones {
+    grid-gap: 30px;    
+    
+    @include tablets {
        grid-template-columns: 1fr;
-       margin-right: -35px;  
+        
     }
 }
 
 .groups__item {    
-    width: 525px;   
+       
     height: 390px;      
     box-shadow: 0 0 8px 0px $admin-border-bottom-color;
 
-    margin-right: 30px;
-    margin-bottom: 30px;
+    
 
     &:last-child {
-        margin: 0;
+        
     }
 
     &.groups__item--group {
@@ -30,11 +29,11 @@
     }
 
     @include tablets { 
-        width: 339px;
+        
     } 
 
-    @include phones { 
-        width: 310px;
+    @include tablets { 
+        
         padding: 0 0;
     }
 }

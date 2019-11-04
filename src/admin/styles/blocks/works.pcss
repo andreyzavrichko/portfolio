@@ -1,7 +1,7 @@
 .works__title {
     margin-bottom: 60px;
 
-    @include phones { 
+    @include tablets { 
         padding: 0 1%;
     }
 }
@@ -12,12 +12,12 @@
 .works__list {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    grid-gap: 1%; 
+    grid-gap: 30px; 
     
-    @include tablets {        
+    @include desktop {        
     grid-template-columns: 1fr 1fr;     
     }
-    @include phones {
+    @include tablets {
     grid-template-columns: 1fr;     
     }
 }
@@ -30,10 +30,7 @@
     background-color: $white-color;
     box-shadow: 0 0 8px 0px $admin-border-bottom-color;
 
-    max-width: 340px;
-
-    margin-right: 25px;
-    margin-bottom: 30px;
+    
 
     &:first-child {
         box-shadow: none;
@@ -45,12 +42,12 @@
 
     &.works__item--add {
         background-image: linear-gradient(to right, $admin-button-color-start, $admin-button-color-end);
-        padding: 165px 95px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
 
-        @include phones {
-            padding: 30px 20px;
-            margin-right: 0;
-            width: 100%;
+        @include tablets {
+            
 
             align-items: flex-start;
         }
@@ -60,7 +57,7 @@
         opacity: .3;
     }
 
-    @include phones { 
+    @include tablets { 
         max-width: 320px;
         width: 94%;
         margin-bottom: 10px;        
@@ -82,7 +79,7 @@
     bottom: 10px;
     right: 10px;
 
-    @include phones { 
+    @include tablets { 
         margin-right: 25px;
     }
 }
@@ -107,8 +104,8 @@
     flex-direction: column;
     justify-content: space-between;
 
-    @include phones { 
-        padding: 0 3%;
+    @include tablets { 
+        
     }
 }
 
