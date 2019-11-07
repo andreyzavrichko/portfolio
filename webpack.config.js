@@ -15,7 +15,7 @@ module.exports = (env, argv) => {
     test: /\.(p|post|)css$/,
     use: [
       isProductionBuild ? MiniCssExtractPlugin.loader : "vue-style-loader",
-      "css-loader",
+      {loader:"css-loader", options:{sourceMap:true}},
       "postcss-loader"
     ]
   };
@@ -107,7 +107,9 @@ module.exports = (env, argv) => {
     resolve: {
       alias: {
         vue$: "vue/dist/vue.esm.js",
-        images: path.resolve(__dirname, "src/images")
+        images: path.resolve(__dirname, "src/images"),
+        components: path.resolve(__dirname, "src/admin/components"),
+        "@": path.resolve(__dirname, "src/admin")
       },
       extensions: ["*", ".js", ".vue", ".json"]
     },
