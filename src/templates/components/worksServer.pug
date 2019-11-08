@@ -13,7 +13,6 @@ script(type="text/x-template")#slider-container
             info(
                 :currentWork="currentWork"
             )             
-
 script(type="text/x-template")#slider-display
     .slider__preview        
         .slider__preview-block(:data-slide="currentIndex + 1")
@@ -29,8 +28,6 @@ script(type="text/x-template")#slider-display
         btns(
             @slide="direction => $emit('slide', direction)"
         )
-
-
 script(type="text/x-template")#slider-thumbs 
     .slider__workimages 
         
@@ -38,7 +35,7 @@ script(type="text/x-template")#slider-thumbs
         transition-group(
             tag="ul"            
         ).slider__list
-            
+             
             li.slider__item(
                 v-for="work in splicedWorks" 
                 :key="work.id"
@@ -48,7 +45,6 @@ script(type="text/x-template")#slider-thumbs
                 .slider__image                    
                     img(:src="`${baseURL}${work.photo}`" alt="Превью").slider__image-icon
 
-
 script(type="text/x-template")#slider-btns        
     .slider__navigation
         .navigation
@@ -56,7 +52,6 @@ script(type="text/x-template")#slider-btns
                 +icon('arrow-down', 'navigation__button-icon')                    
             button(type="button" @click.prevent="$emit('slide', 'prev')").navigation__button.navigation__button--down
                 +icon('arrow-down', 'navigation__button-icon') 
-
 
 script(type="text/x-template")#slider-info
     .slider__content                               
@@ -71,7 +66,6 @@ script(type="text/x-template")#slider-info
                 .slider__linkblock
                     +icon('link', 'slider__icon')
                     a(:href="currentWork.link" target="blank").slider__link Посмотреть сайт
-
 
 script(type="text/x-template")#slider-tags
     ul.slider__tag-list
