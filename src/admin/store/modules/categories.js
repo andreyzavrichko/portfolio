@@ -1,6 +1,7 @@
 export default {
     namespaced: true, 
     
+
     state: {
         categories: []
     },
@@ -17,7 +18,8 @@ export default {
     },
     actions: {
         
-        async addNewSkillGroup({commit}, groupTitle) {             
+        async addNewSkillGroup({commit}, groupTitle) { 
+            
             try {                
                 const response = await this.$axios.post('/categories', {
                     title: groupTitle
@@ -27,8 +29,10 @@ export default {
                 throw new Error(error.response.data.error || error.response.data.message);
             }     
         },
+
         
-        async fetchCategories({commit}) {            
+        async fetchCategories({commit}) { 
+            
             try {
                 const response = await this.$axios.get('/categories');
                 commit('SET_CATEGORIES', response.data.reverse()); 
@@ -37,6 +41,7 @@ export default {
                 throw new Error(error.response.data.error || error.response.data.message);
             }     
         },
+
         
         async removeCategory({commit}, categoryId) {
             try {
@@ -47,6 +52,7 @@ export default {
                 throw new Error(error.response.data.error || error.response.data.message);
             }
         },
+
         
         async editNameCategory({commit}, category) {
             try {

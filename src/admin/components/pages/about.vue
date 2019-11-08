@@ -44,10 +44,12 @@ export default {
   },
 
   computed: {
-    ...mapState("categories", {      
+    ...mapState("categories", {
+      
       categories: state => state.categories
     }),
-    ...mapState("skills", {      
+    ...mapState("skills", {
+      
       skills: state => state.skills
     })
   },
@@ -57,6 +59,7 @@ export default {
     ...mapActions("skills", ["fetchSkills"]),
     ...mapActions("tooltip", ["showTooltip", "setColTooltip", "closeTooltip"]),
 
+    
     filterSkillsByCategoryId(categoryId) {
       return this.skills.filter(skill => skill.category === categoryId);
     }

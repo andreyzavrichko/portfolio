@@ -31,6 +31,6 @@
 </script>
 
 
-<style lang="postcss">
+<style lang="pcss">
 @import "./styles/main.pcss";
 </style>

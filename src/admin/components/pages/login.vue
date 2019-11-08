@@ -72,7 +72,8 @@ export default {
       user: {
         name: "zavrichko-112019",
         password: "JKnm54fdms"
-      },      
+      },
+      
       disabledProp: false
     }
   },
@@ -80,11 +81,12 @@ export default {
   methods: {
     ...mapActions("tooltip", ["showTooltip", "setColTooltip", "closeTooltip"]),
     
+    
     async login() {
       if ((await this.$validate()) === false) return;
       this.disabledProp = true;
 
-      try {
+      try {       
         const {
           data: {token}
         } = await $axios.post('/login', this.user);        
