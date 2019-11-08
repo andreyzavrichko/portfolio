@@ -61,7 +61,7 @@
   ],
   "dependencies": {
     "@babel/polyfill": "^7.7.0",
-    "axios": "^0.18.0",
+    "axios": "^0.19.0",
     "normalize.css": "^8.0.1",
     "promptly": "^3.0.3",
     "pug": "^2.0.3",
@@ -69,7 +69,7 @@
     "signale": "^1.4.0",
     "simple-vue-validator": "^0.16.0",
     "vue": "^2.6.7",
-    "vue-flickity": "^1.1.2",
+    "vue-flickity": "^1.2.1",
     "vue-router": "^3.0.2",
     "vuex": "^3.1.0",
     "yarn": "^1.13.0"

@@ -1,47 +1,99 @@
 import Vue from 'vue';
-import Flickity from 'vue-flickity';
 import axios from 'axios';
+import flickity from 'vue-flickity';
 import {CONSTS} from '../helpers/consts';
 
+const review = {
+  template: '#review',
+  props: {
+    author: {
+      type: String,
+    },
+    position: {
+      type: String,
+    },
+    photo: {
+      type: String,
+    },
+    text: {
+      type: String,
+    },
+  },
+};
+
 new Vue({
-    el:"#review",
-    template:"#reviews__template",
-
-    components: {
-        Flickity
+  el: '#reviews-container',
+  template: '#reviews-content',
+  components: {
+    flickity,
+    review,
+  },
+  data() {
+    return {
+      reviews: {},
+      currentSlideIndex: 0,
+      flickityOptions: {
+        prevNextButtons: false,
+        pageDots: false,
+        resize: true,
+        groupCells: window.innerWidth > 768 ? 2 : 1,
+        cellAlign: 'left',
+      },
+    };
+  },
+  computed: {
+    slidesLength() {
+      return Math.ceil(this.reviews.length / this.flickityOptions.groupCells);
     },
-
-    data () {
-        return {
-            flickityOptions: {
-               
-                prevNextButtons: false,
-                pageDots: false,
-               
-                groupCells: window.screen.width > 948 ? 2 : 1,
-                
-            },
-            reviews: {},
-            baseURL: CONSTS.BASEURL
-        }
+  },
+  methods: {
+    goToPrevReview() {
+      this.$refs.flickity.previous();
     },
-
-    async created() {      
-        const items = await axios.get(CONSTS.BASEURL+'reviews/'+CONSTS.MY_USER_ID)
-            .then(response => {
-                this.reviews = { ...response.data };
-            });          
+    goToNextReview() {
+      this.$refs.flickity.next();
     },
+    setCellHeight() {
+      const slides = this.$refs.flickity.getCellElements();
+      slides.forEach((slide) => (slide.style.height = ''));
 
-    methods: {
-        next() {
-            this.$refs.flickity.next();
-        },
+      const heights = slides.map((slide) => slide.offsetHeight);
+      const max = Math.max(...heights);
 
-        previous() {
-            this.$refs.flickity.previous();
-        }
+      slides.forEach((slide) => (slide.style.height = max + 'px'));
+
+      const viewport = document.querySelector('.flickity-viewport');
+      viewport.style.height = max + 'px';
+    },
+    onResize() {
+      this.flickityOptions.groupCells = window.innerWidth > 768 ? 2 : 1;
+      this.setCellHeight();
+    },
+    async fetchReviews() {
+      const { data: reviews } = await axios.get(CONSTS.BASEURL+'reviews/'+CONSTS.MY_USER_ID);
+      this.reviews = reviews.map((item) => ({
+        ...item,
+        photo: `${CONSTS.BASEURL}/${item.photo}`,
+      }));
+    },
+    async initializeSlider() {
+      await this.fetchReviews();
+      this.$nextTick(() => {
+        this.$refs.flickity.rerender();
+        this.setCellHeight();
+        this.$refs.flickity.on('change', () => {
+          this.currentSlideIndex = this.$refs.flickity.selectedIndex();
+        });
+      });
     }
+  },
+  created() {
+    this.initializeSlider();
+  },
+  mounted() {
+    window.addEventListener('resize', this.onResize);
+  },
+  beforeDestroy() {
+    window.removeEventListener('resize', this.onResize);
+  },
 });
-
-
