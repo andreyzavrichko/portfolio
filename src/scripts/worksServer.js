@@ -1,4 +1,5 @@
 import Vue from 'vue';
+import axios from 'axios';
 import {CONSTS} from '../helpers/consts';
 
 const tags = {
@@ -14,13 +15,17 @@ const thumbs = {
         works: Array,
         currentWork: Object
     },
+    computed: {
+        splicedWorks() {
+            return window.screen.width < 1200 ? [...this.works].splice(0,3) : this.works;         
+        }
+    },
     data() {
         return {
             baseURL: CONSTS.BASEURL
-        }        
+        }
     }
 };
-
 
 const btns = {
     template: "#slider-btns"
@@ -33,23 +38,25 @@ const display = {
         btns,   
         thumbs    
     },
-    props: {    
-        works: Array, 
+    props: {   
+        works: Array,  
         currentWork: Object,
         currentIndex: Number
+    },
+    computed: {
+        
+        reversedWorks() {
+            const works = [...this.works]; 
+            return works.reverse();
+        }
     },
     data() {
         return {
             baseURL: CONSTS.BASEURL
         }
-    },
-    computed: {        
-        reversedWorks() {
-            const works = [...this.works]; 
-            return works.reverse();
-        }
     }
 };
+
 
 const info = {
     template: "#slider-info",
@@ -58,13 +65,14 @@ const info = {
     },
     computed: {
         tagsArray() {
-            return this.currentWork.skills.split(',');
+            return this.currentWork.techs.split(',');
         }
     },
     props: {
         currentWork: Object
     }
 };
+
 
 new Vue ({
     el:"#slider-component",  
@@ -76,10 +84,12 @@ new Vue ({
     data() {   
         return {
             works: [],   
-            currentIndex: 0           
+            currentIndex: window.screen.width < 1200 ? 1 : 0,
+            idArray: []
         }
     },
     computed: { 
+        
         currentWork() { 
             return this.works[this.currentIndex];
         }
@@ -96,35 +106,51 @@ new Vue ({
             if (value < 0) this.currentIndex = worksAmount;
         },
         
-        makeArrWithRequiredImages(data) {
-            return data.map( item=>{ 
-                const requiredPic = require(`../images/content/work/${item.photo}`);
-                item.photo = requiredPic;
-
-                return item;
-            })
-        },
-        
         handleSlide(direction) {
             switch (direction) {
-                case 'next':
+                case 'next':                   
+                    
                     this.currentIndex++;
                     break;
                 case 'prev':
+                    
                     this.currentIndex--;
                     break;
             }
         },
         
         handleClickThumbs(currentIDthumbs) {
-            this.currentIndex = currentIDthumbs-1;  
+            
+            let id = 0;
+
+            this.idArray.forEach( element => {
+                if (element.id === currentIDthumbs) {
+                    id = element.index;
+                    return;
+                }
+            });
+
+            this.currentIndex = id;
+            
         }
     },
-    created() { 
-        const data = require('../data/works.json');
-        this.works = this.makeArrWithRequiredImages(data);
+    async created() { 
+        const worksGroup = await axios.get(CONSTS.BASEURL+'works/'+CONSTS.MY_USER_ID)
+            .then(response => {
+                this.works = [...response.data];
+            });
+            
+            
+            let c = 0;
+            const obj = {
+                index: 0,
+                id: 0                
+            }
+            this.works.forEach(work => {               
+                obj.index = c;
+                c++;
+                obj.id = work.id;
+                this.idArray.push({...obj});
+            });
     }
 });
-
-
-

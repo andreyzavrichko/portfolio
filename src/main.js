@@ -9,6 +9,7 @@ import "./scripts/parallax";
 import "./scripts/budda-parallax";
 import "./scripts/reviews";
 import "./scripts/skills";
-import "./scripts/works";
+//import "./scripts/works";
+import "./scripts/worksServer";
 import "./scripts/feedback-form";
 import "./scripts/mobile-menu";
