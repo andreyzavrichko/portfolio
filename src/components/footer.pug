@@ -24,9 +24,17 @@ footer.footer
                     ul.social__list
                       - var socials = ['insta', 'vk', 'github'];
                       each social in socials
-                        li.social__item
-                          a(href="#").social__link
-                            +icon(social, 'social__icons')
+                          li.social__item
+                              - var soclink = ''                          
+                              case social
+                                  when 'insta'
+                                      - soclink='//instagram.com/andreyzavrichko'
+                                  when 'vk'
+                                      - soclink='//vk.com/id85626051'
+                                  when 'github'
+                                      - soclink='//github.com/andreyzavrichko'
+                              a(href=`${soclink}` target="blank").social__link
+                                  +icon(social, 'social__icons') 
               .footer__greatthink
                 article.footer__text Всегда пишите код так, будто сопровождать его будет склонный к насилию психопат, который знает где вы живете
                 .footer__thinker Martin Golding 
