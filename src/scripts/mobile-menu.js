@@ -22,12 +22,12 @@ const menuMobileVue = new Vue({
   data() {    
       return {
           menuList: [
-              { text: 'Главная', href: 'section_1' },
-              { text: 'Обо мне', href: 'section_2' },
-              { text: 'Навыки', href: 'section_3' },
-              { text: 'Работы', href: 'section_4' },
-              { text: 'Отзывы', href: 'section_5' },
-              { text: 'Связаться', href: 'section_6' }
+              { text: 'Главная', href: 'main' },
+              { text: 'Обо мне', href: 'about' },
+              { text: 'Навыки', href: 'skills' },
+              { text: 'Работы', href: 'works' },
+              { text: 'Отзывы', href: 'reviews' },
+              { text: 'Связаться', href: 'feedback' }
           ],
           showMenu: false
       }
