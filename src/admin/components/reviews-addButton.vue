@@ -1,5 +1,7 @@
 <template lang="pug">
-    li.reviews__item.reviews__item--add
+    button.reviews__item.reviews__item--add(
+                @click="addNewReviewGroup"
+            )
         .btn-container
             .btn-container__add(
                 @click="addNewReviewGroup"

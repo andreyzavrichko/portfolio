@@ -1,52 +1,57 @@
 <template lang="pug">
     section.works
-        .container
-          .works__title
-            .title
-              h2.title Блок «Работы»  
-          works-add(
-            v-if="showAddingForm === true"
-            @cancelAddNewGroup="cancelAddNewGroupForm" 
-            @addNewWork="addNewWork"          
-          )
-          works-edit(
-            v-if="showEditingForm === true"
-            @cancelEditGroup="cancelEditExistedGroupForm" 
-            :workEditedById="workEditedById" 
-            @editExistedWork="editExistedWork"             
-          )          
+      .works-page__preloader(v-if="isLoading")
+        clip-loader()
+      template(v-else)
+      .container
+        .works__title
+          .title
+            h2.title Блок «Работы»  
+        works-add(
+          v-if="showAddingForm === true"
+          @cancelAddNewGroup="cancelAddNewGroupForm" 
+          @addNewWork="addNewWork"          
+        )
+        works-edit(
+          v-if="showEditingForm === true"
+          @cancelEditGroup="cancelEditExistedGroupForm" 
+          :workEditedById="workEditedById" 
+          @editExistedWork="editExistedWork"             
+        )          
 
-          .works__listwrapper
-            ul.works__list 
-              works-add-button(
-                @addNewWorkGroup="addNewWorkGroupForm"
-              )                         
-              works-group(
-                v-for="work in works"
-                :key="work.id"
-                :work="work"      
-                @editWorkGroup="editExistedWorkGroupForm"                          
-              )
-
+        .works__listwrapper
+          ul.works__list 
+            works-add-button(
+              @addNewWorkGroup="addNewWorkGroupForm"
+            )                         
+            works-group(
+              v-for="work in works"
+              :key="work.id"
+              :work="work"      
+              @editWorkGroup="editExistedWorkGroupForm"                          
+            )
 </template>
 
 
 <script>
 import { mapActions, mapGetters, mapState } from "vuex";
 import { good, bad } from "@/helpers/tooltipDispath";
+import { ClipLoader } from '@saeris/vue-spinners';
 
 export default {
   components: {
     worksEdit: () => import("components/works-edit.vue"),
     worksAdd: () => import("components/works-add.vue"),
     worksGroup: () => import("components/works-group.vue"),
-    worksAddButton: () => import("components/works-addButton.vue")
+    worksAddButton: () => import("components/works-addButton.vue"),
+    ClipLoader
   },
   data() {
     return {
       showAddingForm: false,
       showEditingForm: false,
-      workEditedById: {}
+      workEditedById: {},
+      isLoading: false,
     };
   },
   computed: {
@@ -55,13 +60,16 @@ export default {
       works: state => state.works
     })
   },
-  async created() {    
+  async created() { 
+    this.isLoading = true;   
     try {
       await this.fetchWorks();
       good(this, "Данные успешно загружены");
     } catch (error) {
       bad(this, error);
-    }
+    }finally {
+        this.isLoading = false;
+      }
   },
   methods: {
     ...mapActions("works", ["fetchWorks"]),
@@ -96,3 +104,15 @@ export default {
   }
 };
 </script>
+<style lang="postcss" scoped>
+.works-page__preloader {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+</style>

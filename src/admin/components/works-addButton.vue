@@ -1,5 +1,7 @@
 <template lang="pug">
-    li.works__item.works__item--add
+    button.works__item.works__item--add(
+                @click="addNewWorkGroup"
+            )
         .btn-container
             .btn-container__add(
                 @click="addNewWorkGroup"
