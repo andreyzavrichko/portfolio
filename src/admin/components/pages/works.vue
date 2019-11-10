@@ -64,7 +64,7 @@ export default {
     this.isLoading = true;   
     try {
       await this.fetchWorks();
-      good(this, "Данные успешно загружены");
+      
     } catch (error) {
       bad(this, error);
     }finally {
