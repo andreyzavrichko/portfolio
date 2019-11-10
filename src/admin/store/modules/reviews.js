@@ -1,10 +1,10 @@
 import { packReviewToFormData } from '@/helpers/formDataPack';
-import {CONSTS} from '../../../helpers/consts';
+
 
 export default {
     namespaced: true,
     state: {
-        reviews: []
+        reviews: []        
     },
     mutations: {
         SET_REVIEW: (state, review) => {
@@ -32,9 +32,10 @@ export default {
             }     
         },
         
-        async fetchReviews({commit}) {             
+        async fetchReviews({commit, rootGetters}) {             
             try {
-                const response = await this.$axios.get(`/reviews/${CONSTS.MY_USER_ID}`);
+                const userId = rootGetters['user/userId'];
+                const response = await this.$axios.get(`/reviews/${userId}`);
                 commit('SET_ALL_REVIEWS', response.data.reverse()); 
                 return response;
             } catch (error) {

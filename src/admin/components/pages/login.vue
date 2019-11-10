@@ -70,8 +70,8 @@ export default {
   data() {
     return {
       user: {
-        name: "zavrichko-112019",
-        password: "JKnm54fdms"
+        name: "",
+        password: ""
       },
       
       disabledProp: false
@@ -94,7 +94,7 @@ export default {
         $axios.defaults.headers['Authorization'] = `Bearer ${token}`;        
         this.$router.replace('/');
         this.disabledProp = false;
-        good(this, "Успешный вход");
+        
       } catch (error) {
         this.disabledProp = false;
         bad(this, error);

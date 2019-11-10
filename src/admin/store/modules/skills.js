@@ -29,9 +29,10 @@ export default {
                 throw new Error(error.response.data.error || error.response.data.message);
             }
         },        
-        async fetchSkills({commit}, skill) {
+        async fetchSkills({commit, rootGetters}, skill) {
             try {
-              const response = await this.$axios.get(`/skills/${CONSTS.MY_USER_ID}`, skill); 
+              const userId = rootGetters['user/userId'];  
+              const response = await this.$axios.get(`/skills/${userId}`, skill); 
               commit('SET_SKILLS', response.data);
               return response;
             } catch (error) {

@@ -1,5 +1,5 @@
 import {packWorkToFormData} from '@/helpers/formDataPack';
-import {CONSTS} from '../../../helpers/consts';
+
 
 export default {
     namespaced: true,
@@ -32,9 +32,10 @@ export default {
             }     
         },
         
-        async fetchWorks({commit}) {            
+        async fetchWorks({commit, rootGetters}) {            
             try {
-                const response = await this.$axios.get(`/works/${CONSTS.MY_USER_ID}`);
+                const userId = rootGetters['user/userId'];
+                const response = await this.$axios.get(`/works/${userId}`);
                 commit('SET_ALL_WORKS', response.data.reverse()); 
                 return response;
             } catch (error) {
