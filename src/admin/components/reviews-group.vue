@@ -16,9 +16,11 @@
                     data-text="Править"
                 )
                     button(type="button").button.button--edit                         
-                .btns(data-text="Удалить")
+                .btns(
+                    @click="removeExistedReview(review.id)"
+                    data-text="Удалить")
                     button(
-                        @click="removeExistedReview(review.id)"
+                        
                         type="button"
                     ).button.button--discard 
 </template>

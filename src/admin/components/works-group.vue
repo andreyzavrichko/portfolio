@@ -19,9 +19,11 @@
                   data-text="Править"
               )
                   button(type="button").button.button--edit                         
-              .btns(data-text="Удалить")
+              .btns(
+                  @click="removeExistedWork(work.id)"
+                  data-text="Удалить")
                   button(
-                    @click="removeExistedWork(work.id)"
+                    
                     type="button"
                   ).button.button--discard   
 </template>
