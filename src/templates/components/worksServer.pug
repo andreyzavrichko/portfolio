@@ -21,7 +21,7 @@ script(type="text/x-template")#slider-display
         :key="currentWork.id"
       )
     .slider-display__thumbs
-      .slider-display__thumbs-list(:style="`transform: translateX(-${offset*100/maxThumbsCount}%)`")
+      .slider-display__thumbs-list(:style="`transform: translateY(-${offset*100/maxThumbsCount}%)`")
         slider-thumbs(
           :works="works"
           :current-index="currentIndex"
