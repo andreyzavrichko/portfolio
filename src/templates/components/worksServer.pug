@@ -1,73 +1,77 @@
-script(type="text/x-template")#slider-container
-    .works__widget
-        .slider(v-if="Object.keys(works).length > 0")   
-                     
-                    
-            display(            
-                :works="works",
-                :currentWork="currentWork",
-                :currentIndex="currentIndex",
-                @slide="handleSlide",
-                @clickthumbs="handleClickThumbs"            
-            )
-            info(
-                :currentWork="currentWork"
-            )             
-script(type="text/x-template")#slider-display
-    .slider__preview        
-        .slider__preview-block(:data-slide="currentIndex + 1")
-            .slider__preview-image
-                img(:src="`${baseURL}${currentWork.photo}`" alt="Крупный план").slider__preview-icon
-            
-            thumbs(
-                :works="reversedWorks",
-                :currentWork="currentWork",
-                @clickthumbs="currentIDthumbs => $emit('clickthumbs',currentIDthumbs)"
-            )
-                    
-        btns(
-            @slide="direction => $emit('slide', direction)"
-        )
-script(type="text/x-template")#slider-thumbs 
-    .slider__workimages 
-        
-        
-        transition-group(
-            tag="ul"            
-        ).slider__list
-             
-            li.slider__item(
-                v-for="work in splicedWorks" 
-                :key="work.id"
-                :class="{active: currentWork.id === work.id}"
-                @click.prevent="$emit('clickthumbs',work.id)"            
-            )                
-                .slider__image                    
-                    img(:src="`${baseURL}${work.photo}`" alt="Превью").slider__image-icon
+include ../../components/arrow-button
 
-script(type="text/x-template")#slider-btns        
-    .slider__navigation
-        .navigation
-            button(type="button" @click.prevent="$emit('slide', 'next')").navigation__button.navigation__button--up
-                +icon('arrow-down', 'navigation__button-icon')                    
-            button(type="button" @click.prevent="$emit('slide', 'prev')").navigation__button.navigation__button--down
-                +icon('arrow-down', 'navigation__button-icon') 
+script(type="text/x-template")#slider-container
+  .works-slider
+    .works-slider__display
+      slider-display(
+        :works="works"
+        :current-work="currentWork"
+        :current-index="currentWorkIndex"
+        @change-slide="changeSlide"
+      )
+    .works-slider__info
+      slider-info(v-bind="currentWork")
+
+script(type="text/x-template")#slider-display
+  .slider-display(:data-index="currentIndex + 1")
+    transition-group.slider-display__current-slide(name="fade" tag="div")
+      img.slider-display__current-image(
+        v-if="currentWork"
+        :src="currentWork.photo"
+        :key="currentWork.id"
+      )
+    .slider-display__thumbs
+      .slider-display__thumbs-list(:style="`transform: translateX(-${offset*100/maxThumbsCount}%)`")
+        slider-thumbs(
+          :works="works"
+          :current-index="currentIndex"
+          @change-slide="goToSlide"
+        )
+    .slider-display__buttons
+      slider-buttons(
+        :is-disabled-prev="currentIndex === 0"
+        :is-disabled-next="currentIndex === works.length - 1"
+        @prev-slide="goToPrevSlide"
+        @next-slide="goToNextSlide"
+      )
+
+
+script(type="text/x-template")#slider-thumbs
+  .slider-thumbs
+    .slider-thumbs__item(
+      v-for="(work, index) in works"
+      :key="index"
+      :class="{ 'slider-thumbs__item_active': index === currentIndex }"
+      @click="$emit('change-slide', index)"
+    )
+      img.slider-thumbs__image(:src="work.photo")
+
+script(type="text/x-template")#slider-buttons
+  .slider-buttons
+    button.slider-buttons__button(
+      :class="{ 'slider-buttons__button_disabled': isDisabledPrev }"
+      @click="onPrevButtonClick"
+    )
+      +icon('arrow-down', 'slider-buttons__icon slider-buttons__icon_prev')
+    button.slider-buttons__button(
+      :class="{ 'slider-buttons__button_disabled': isDisabledNext }"
+      @click="onNextButtonClick"
+    )
+      +icon('arrow-down', 'slider-buttons__icon slider-buttons__icon_next')
 
 script(type="text/x-template")#slider-info
-    .slider__content                               
-        .slider__description
-            .slider__tag
-                tags(
-                    :tagsArray="tagsArray"
-                )                     
-                .slider__work
-                    h3.slider__work-title {{currentWork.title}}
-                    .slider__work-description {{currentWork.description}}
-                .slider__linkblock
-                    +icon('link', 'slider__icon')
-                    a(:href="currentWork.link" target="blank").slider__link Посмотреть сайт
+  .slider-info
+    .slider-info__tags
+      tags(:tags="tags")
+    .slider-info__title {{ title }}
+    .slider-info__description {{ description }}
+    a.slider-info__link(:href="link" target="_blank")
+      +icon('link', 'slider-info__link-icon')
+      .slider-info__link-text Посмотреть сайт
 
 script(type="text/x-template")#slider-tags
-    ul.slider__tag-list
-        li.slider__tag-item(v-for="tag in tagsArray")
-            .slider__tag-text {{tag}} 
+  ul.slider-tags
+    li.slider-tags__item(
+      v-for="(tag, index) in tags"
+      :key="index"
+    ) {{ tag}}

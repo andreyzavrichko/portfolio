@@ -1,156 +1,186 @@
 import Vue from 'vue';
 import axios from 'axios';
+import constants from '../styles/variables.json';
 import {CONSTS} from '../helpers/consts';
 
-const tags = {
-    template: "#slider-tags",
-    props: {
-        tagsArray: Array
-    }
+const sliderThumbs = {
+  template: '#slider-thumbs',
+  props: {
+    works: {
+      type: Array,
+    },
+    currentIndex: {
+      type: Number,
+    },
+  },
 };
 
-const thumbs = {
-    template: "#slider-thumbs",
-    props: { 
-        works: Array,
-        currentWork: Object
+const sliderTags = {
+  template: '#slider-tags',
+  props: {
+    tags: {
+      type: Array,
     },
-    computed: {
-        splicedWorks() {
-            return window.screen.width < 1200 ? [...this.works].splice(0,3) : this.works;         
-        }
-    },
-    data() {
-        return {
-            baseURL: CONSTS.BASEURL
-        }
-    }
+  },
 };
 
-const btns = {
-    template: "#slider-btns"
+const sliderButtons = {
+  template: '#slider-buttons',
+  props: {
+    isDisabledPrev: {
+      type: Boolean,
+    },
+    isDisabledNext: {
+      type: Boolean,
+    },
+  },
+  methods: {
+    onPrevButtonClick() {
+      if (!this.isDisabledPrev) {
+        this.$emit('prev-slide');
+      }
+    },
+    onNextButtonClick() {
+      if (!this.isDisabledNext) {
+        this.$emit('next-slide');
+      }
+    },
+  },
 };
 
-
-const display = {
-    template: "#slider-display",
-    components: {
-        btns,   
-        thumbs    
+const sliderDisplay = {
+  template: '#slider-display',
+  components: {
+    sliderThumbs,
+    sliderButtons,
+  },
+  props: {
+    works: {
+      type: Array,
     },
-    props: {   
-        works: Array,  
-        currentWork: Object,
-        currentIndex: Number
+    currentWork: {
+      type: Object,
     },
-    computed: {
-        
-        reversedWorks() {
-            const works = [...this.works]; 
-            return works.reverse();
-        }
+    currentIndex: {
+      type: Number,
     },
-    data() {
-        return {
-            baseURL: CONSTS.BASEURL
-        }
-    }
+  },
+  watch: {
+    currentIndex(currentIndex) {
+      if (currentIndex < this.offset) {
+        this.offset = currentIndex;
+      } else if (currentIndex > this.offset + this.maxThumbsCount - 1) {
+        this.offset = currentIndex - this.maxThumbsCount + 1;
+      }
+    },
+  },
+  data() {
+    return {
+      windowWidth: 0,
+      offset: 0,
+    };
+  },
+  computed: {
+    maxThumbsCount() {
+      if (this.windowWidth < parseInt(constants['bp-phones'])) {
+        return 0;
+      }
+      if (this.windowWidth < parseInt(constants['bp-tablets'])) {
+        return 2;
+      }
+      if (this.windowWidth < parseInt(constants['bp-desktop-hd'])) {
+        return 3;
+      }
+      return 4;
+    },
+  },
+  methods: {
+    goToPrevSlide() {
+      if (this.currentIndex > 0) {
+        this.goToSlide(this.currentIndex - 1);
+      }
+    },
+    goToNextSlide() {
+      if (this.currentIndex < this.works.length - 1) {
+        this.goToSlide(this.currentIndex + 1);
+      }
+    },
+    goToSlide(index) {
+      this.$emit('change-slide', index);
+    },
+    setWindowWidth() {
+      this.windowWidth = window.innerWidth;
+    },
+  },
+  mounted() {
+    this.setWindowWidth();
+  },
+  created() {
+    window.addEventListener('resize', this.setWindowWidth);
+  },
+  beforeDestroy() {
+    window.removeEventListener('resize', this.setWindowWidth);
+  },
 };
 
-
-const info = {
-    template: "#slider-info",
-    components: {
-        tags    
+const sliderInfo = {
+  template: '#slider-info',
+  components: {
+    tags: sliderTags,
+  },
+  props: {
+    techs: {
+      type: String,
+      default: '',
     },
-    computed: {
-        tagsArray() {
-            return this.currentWork.techs.split(',');
-        }
+    title: {
+      type: String,
     },
-    props: {
-        currentWork: Object
+    description: {
+      type: String,
+    },
+    link: {
+      type: String,
+    },
+  },
+  computed: {
+    tags() {
+      return this.techs.split(', ');
     }
+  }
 };
 
-
-new Vue ({
-    el:"#slider-component",  
-    template: "#slider-container", 
-    components: {
-        display,    
-        info    
+new Vue({
+  el: '#slider-component',
+  template: '#slider-container',
+  components: {
+    sliderDisplay,
+    sliderInfo,
+  },
+  data() {
+    return {
+      works: [],
+      currentWorkIndex: 0,
+    };
+  },
+  computed: {
+    currentWork() {
+      return this.works[this.currentWorkIndex];
     },
-    data() {   
-        return {
-            works: [],   
-            currentIndex: window.screen.width < 1200 ? 1 : 0,
-            idArray: []
-        }
+  },
+  methods: {
+    changeSlide(value) {
+      this.currentWorkIndex = value;
     },
-    computed: { 
-        
-        currentWork() { 
-            return this.works[this.currentIndex];
-        }
+    async fetchWorks() {
+      const { data: works } = await axios.get(CONSTS.BASEURL+'works/'+CONSTS.MY_USER_ID);
+      this.works = works.map((item) => ({
+        ...item,
+        photo: `${CONSTS.BASEURL}/${item.photo}`,
+      }));
     },
-    watch: { 
-        currentIndex(value) {
-            this.makeInfiniteLoopForCurrentIndex(value);
-        }
-    },
-    methods: { 
-        makeInfiniteLoopForCurrentIndex(value) {
-            const worksAmount = this.works.length - 1; 
-            if (value > worksAmount) this.currentIndex = 0; 
-            if (value < 0) this.currentIndex = worksAmount;
-        },
-        
-        handleSlide(direction) {
-            switch (direction) {
-                case 'next':                   
-                    
-                    this.currentIndex++;
-                    break;
-                case 'prev':
-                    
-                    this.currentIndex--;
-                    break;
-            }
-        },
-        
-        handleClickThumbs(currentIDthumbs) {
-            
-            let id = 0;
-
-            this.idArray.forEach( element => {
-                if (element.id === currentIDthumbs) {
-                    id = element.index;
-                    return;
-                }
-            });
-
-            this.currentIndex = id;
-            
-        }
-    },
-    async created() { 
-        const worksGroup = await axios.get(CONSTS.BASEURL+'works/'+CONSTS.MY_USER_ID)
-            .then(response => {
-                this.works = [...response.data];
-            });
-            
-            
-            let c = 0;
-            const obj = {
-                index: 0,
-                id: 0                
-            }
-            this.works.forEach(work => {               
-                obj.index = c;
-                c++;
-                obj.id = work.id;
-                this.idArray.push({...obj});
-            });
-    }
+  },
+  created() {
+    this.fetchWorks();
+  },
 });
