@@ -10,7 +10,7 @@
                             @change="appendFileAndRenderPhoto"
                             type='file'
                         ).avatar-change__file                        
-                        .avatar__block--reviews
+                        .avatar__block--reviews.avatar__block--reviews2
                             .avatar__image(
                                 :class="{'filled' : this.renderedPhotoUrl.length}",
                                 :style="{'backgroundImage' : `url(${this.renderedPhotoUrl})`}"
