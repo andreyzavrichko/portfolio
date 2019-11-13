@@ -10,7 +10,7 @@
                             @change="appendFileAndRenderPhoto"
                             type='file'
                         ).avatar-change__file
-                        .avatar__block--reviews
+                        .avatar__block--reviews.avatar__block--reviews2
                             img(
                                 v-if="renderedPhotoUrl.length === 0"
                                 :src="photoURL" 
