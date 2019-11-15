@@ -122,7 +122,11 @@ export default {
       isDrag: false
     };
   },
-
+watch: {
+   workEditedById() {
+     this.workCopy = { ...this.workEditedById };
+   }
+  },
   computed: {
     urlPhoto() {
       return axios.defaults.baseURL + this.workEditedById.photo;
