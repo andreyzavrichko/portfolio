@@ -102,9 +102,13 @@ export default {
   computed: {
     photoURL() {
       return axios.defaults.baseURL + this.reviewEditedById.photo;
-    }
+    }    
   },
-
+  watch: {
+   reviewEditedById() {
+     this.reviewCopy = { ...this.reviewEditedById };
+   }
+  },
   created() {
     this.reviewCopy = { ...this.reviewEditedById };
   },
