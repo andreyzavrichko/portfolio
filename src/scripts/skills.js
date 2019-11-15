@@ -1,32 +1,24 @@
 import Vue from 'vue';
+import axios from 'axios';
+import {CONSTS} from '../helpers/consts';
 
-const skill = {
+
+const skillItem = {
     template: "#skill",
     props: {    
-        skillName: String,
-        skillPercent: Number
+        skill: Object
     },
     methods: {
-        drawColoredCircle(value) {
+        drawColoredCircle() {
             const circle = this.$refs['color-circle']; 
             const dashArray = parseInt(getComputedStyle(circle).getPropertyValue('stroke-dasharray'));
-            const percent = dashArray / 100 * (100 - value);
+
+            const percent = dashArray / 100 * (100 - this.skill.percent);
             circle.style.strokeDashoffset = percent;
-        },
-        onIntersecting(entries) {
-            entries.forEach((entry) => {
-                if (entry.target === this.$el) {
-                    const value = entry.isIntersecting ? this.skillPercent : 0;                    
-                    this.drawColoredCircle(value);
-                }
-            });
-        },
+        }
     },
     mounted() { 
-        this.drawColoredCircle();    
-        
-        const observer = new IntersectionObserver(this.onIntersecting);
-        observer.observe(this.$el);
+        this.drawColoredCircle();
     }
 }
 
@@ -34,26 +26,44 @@ const skill = {
 const skillsRow = {
     template: "#skills-row",
     components: { 
-        skill
+        skillItem
     },
-    props: {    
-        skill: Object
+
+    props: {            
+        skillList: Object,
+        group: Object
+    },
+
+    computed: {
+        getNameSkill() {
+            return {}
+        }
     }
 }
 
-new Vue ({
-    el: "#skills-component",   
-    template: "#skills-list",  
-    components: {  
+new Vue({
+    el: "#skills-component",    
+    template: "#skills-list",   
+    components: {   
         skillsRow
     },
     data() {    
         return {
-            skills: {}
+            skillGroup: {},
+            skillList: {}
         }
     },
-    created() { 
-        const data = require("../data/skills.json");
-        this.skills = data;
+
+    async created() { 
+       
+        const categories = await axios.get(CONSTS.BASEURL+'categories/'+CONSTS.MY_USER_ID)
+            .then(response => {
+                this.skillGroup = { ...response.data };
+            });
+        const skills = await axios.get(CONSTS.BASEURL+'skills/'+CONSTS.MY_USER_ID)
+            .then(response => {
+                this.skillList = { ...response.data };
+            });
+         
     }
 })

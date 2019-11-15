@@ -44,12 +44,20 @@ html(lang="ru")
                 points="0,0 0,100 1000,0"
               )
           
-          include components/review 
-          
-          section.feedback-section
+          include components/review           
+
+          section.feedback-section#feedback
             .container
               #form-container
               include components/feedback-form
         include components/footer
+      .modal
+        .modal__window
+          .modal__title Письмо отправлено
+          button(type="button").form__elem-button.modal__button Закрыть 
+        .modal__tooltip.green
+          .modal__tooltip-text Сообщение отправлено
+          .modal__tooltip-close
+      nav#navigation_menu--mobile
 
-             include ./templates/entry.pug
+    include ./templates/entry.pug

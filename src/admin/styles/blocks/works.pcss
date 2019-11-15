@@ -13,7 +13,7 @@
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-gap: 30px; 
-    
+    padding-bottom: 30px;
     @include desktop {        
     grid-template-columns: 1fr 1fr;     
     }
@@ -87,10 +87,10 @@
     }
 }
 
-.works__tag-item {
-    //position: absolute;
+.works__tag-item {    
     border-radius: 30px 30px;
-
+    display: inline-flex;
+    margin-right: 10px;
     font-size: 13px;
     font-weight: $semi-bold;
 
